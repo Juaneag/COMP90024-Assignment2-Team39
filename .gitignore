@@ -1,0 +1,8 @@
+mnt/.DS_Store
+.DS_Store
+Ansible_test/.DS_Store
+Ansible_test/roles/.DS_Store
+
+mnt/ext100/twitter-huge.json
+ansible/unimelb-comp90024-2023-grp-39-openrc.sh
+ansible/output.txt
