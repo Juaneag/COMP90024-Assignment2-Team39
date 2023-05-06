@@ -1,3 +1,37 @@
+# 6 May Update
+
+## CouchDB
+
+Can setup clusters on docker containers on different instances.
+
+
+
+
+
+
+# 5 May Update
+
+## CouchDB
+
+Still cannot figure out how to make clusters of three couchDB on three different instances. However, thats might not be the solution we looking for.
+
+I managed to launch couchDB cluster on single instance, and Luca suggest thats the better option.
+
+## Ansible
+
+I need to change the code to make sure the instance it created is equiped with jq. 
+
+Also need to figure way to create instance with couchDB cluster configured.
+
+## Todo 
+
+Figure way to process the data. Luca mentioned that python does not allow stream with couchDB, he suggest Node.js
+
+
+
+
+
+
 # 4 May Update
 
 ## Instances

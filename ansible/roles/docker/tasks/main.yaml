@@ -24,6 +24,7 @@
         "snapd",
         "software-properties-common",
         "unzip",
+        "jq"
       ]
     state: latest
     install_recommends: false
