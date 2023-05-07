@@ -1,3 +1,29 @@
+# 7 May Update
+
+## Spark
+
+Is there any possibility to use spark for data preprocessing e.g. PySpark.
+
+## Containers
+
+Do we have to use docker SWARM to create containers other than couchDB?
+
+## Data
+
+Check the data, we have 3,226,685 twitts have place can be matched to sal.json file. Expected more less twitts can be matched to sal.json file. So far, 160+ MB if I only store place and user_id, will be much larger if store something like text.
+
+We need to:
+
+- come up with our story, then preprocess the data.
+- make the data into couchDB.
+- come up with way to analysis data, how to come up with dictionary to determine which data need to process. Also, come up with ways to deal with 'special case', e.g., "I don't like XXX" where XXX is in our key dictionary and we want to do analysis on people like XXX. (Above senario might be done by unsupervised NLP, but the algorithm might take a very long time to train or even to predict on large dataset) OR we can simply make a very general assumption on that.
+- come up with tools to analysis data, e.g., spark, etc,.
+
+## Front End
+
+I guess our front end is just a dashboard (interactive) on the data given that we only work on static data. Hence, we can use python Streamlit or something like D3.js 
+
+
 # 6 May Update
 
 ## CouchDB
