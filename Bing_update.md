@@ -23,6 +23,14 @@ We need to:
 
 I guess our front end is just a dashboard (interactive) on the data given that we only work on static data. Hence, we can use python Streamlit or something like D3.js 
 
+### Front End Update No. 2
+
+I upload a docker file from to show the possibility to wrape front end and back end in one python script (https://docs.streamlit.io/knowledge-base/tutorials/deploy/docker)
+
+I consider this python package is much easier to use than Node.js
+
+However, we need to figure if not Python not allowing stream read from couchDB, will we still be able to use the Python as backend.
+
 
 # 6 May Update
 
