@@ -1,0 +1,24 @@
+# Common vars
+availability_zone: melbourne-qh2-uom
+instance_image: bbaf16f8-2484-48d7-b455-42209cc4b8d2
+instance_key_name: cloud
+instance_flavor: uom.mse.1c4g
+
+# Volume
+volumes:
+  - vol_name: data
+    vol_size: 100
+
+# Security group
+security_groups:
+  - name: port4369
+    description: "access on portocol 4369"
+    protocol: tcp
+    port_range_min: 4369
+    port_range_max: 4369
+    remote_ip_prefix: 0.0.0.0/0
+
+# Instance
+instances:
+  - name: volume_mount
+    volumes: ["data"]

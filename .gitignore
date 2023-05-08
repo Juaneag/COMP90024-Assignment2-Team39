@@ -11,3 +11,11 @@ mnt/ext100/sal.json
 .gitignore
 .gitignore
 mnt/preprocessed.json
+ansible/volume_mount/roles/openstack-mount/tasks/main.yaml
+ansible/docker/get-pip.py
+ansible/docker/output.txt
+ansible/docker/unimelb-comp90024-2023-grp-39-openrc.sh
+.gitignore
+ansible/volume_mount/output.txt
+ansible/volume_mount/unimelb-comp90024-2023-grp-39-openrc.sh
+ansible/volume_mount/get-pip.py
