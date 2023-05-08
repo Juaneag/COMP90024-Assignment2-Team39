@@ -8,6 +8,8 @@ I know how to mount volume (change /opt/fstab file with ansible).
 
 I can use wget to download data from dropbox straight into instance instead of download locally then with scp (which is extremely slow lol)
 
+Update preprocess step to avoid time (and space) to extract data.
+
 
 
 
