@@ -1,3 +1,16 @@
+# 8 May Update
+
+## Ansible
+
+I know how to mount volume (change /opt/fstab file with ansible).
+
+## Data
+
+I can use wget to download data from dropbox straight into instance instead of download locally then with scp (which is extremely slow lol)
+
+
+
+
 # 7 May Update
 
 ## Spark
