@@ -21,3 +21,6 @@ ansible/volume_mount/unimelb-comp90024-2023-grp-39-openrc.sh
 ansible/volume_mount/get-pip.py
 twitter-huge.json.zip
 mnt/preprocessed_zip.json
+preprocessing/test_output.py
+preprocessing/test_output.py
+preprocessing/test.ipynb
