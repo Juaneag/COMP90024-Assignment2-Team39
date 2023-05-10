@@ -3,7 +3,7 @@ volumes:
   - device: /dev/vdb
     mountpoint: /home/ubuntu/data
 
-masternode: 172.26.134.212
+masternode: 172.26.129.56
 node_count: 3
 username: admin
 password: admin

@@ -1,4 +1,4 @@
-export declare nodes=(172.26.134.212 172.26.132.92 172.26.131.153)
+export declare nodes=(172.26.129.56 172.26.135.223 172.26.129.198)
 export masternode=`echo ${nodes} | cut -f1 -d' '`
 export declare othernodes=`echo ${nodes[@]} | sed s/${masternode}//`
 export size=${#nodes[@]}
@@ -13,7 +13,7 @@ sudo docker pull ibmcom/couchdb3:${VERSION}
 
 for node in "${nodes[@]}" 
   do
-    sudo docker create -p 5984:5984 -p 4369:4369 -p 9100:9100\
+    sudo docker create -p 5984:5984 -p 4369:4369 -p 9100:9100 -v /home/ubuntu/data/couchdb:/opt/couchdb/data\
       --name couchdb${node}\
       --env COUCHDB_USER=${user}\
       --env COUCHDB_PASSWORD=${pass}\

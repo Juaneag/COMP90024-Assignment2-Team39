@@ -28,7 +28,6 @@
     - host_vars/couchdb.yaml
   roles:
     - role: volumes
-    - role: enable-spc
     - role: couchdb
 
 - hosts: CouchDBClusters
