@@ -1,4 +1,4 @@
-export declare nodes=(172.26.134.255 172.26.135.168 172.26.134.53)
+export declare nodes=(172.26.134.212 172.26.132.92 172.26.131.153)
 export masternode=`echo ${nodes} | cut -f1 -d' '`
 export declare othernodes=`echo ${nodes[@]} | sed s/${masternode}//`
 export size=${#nodes[@]}

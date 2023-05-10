@@ -1,0 +1,11 @@
+---
+volumes:
+  - device: /dev/vdb
+    mountpoint: /home/ubuntu/data
+
+masternode: 172.26.134.212
+node_count: 3
+username: admin
+password: admin
+cookie: a192aeb9904e6590849337933b000c99
+version: 3.2.1

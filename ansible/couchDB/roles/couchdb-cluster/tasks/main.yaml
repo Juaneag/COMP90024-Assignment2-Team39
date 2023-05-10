@@ -1,0 +1,54 @@
+- name: first step
+  ansible.builtin.shell:
+    cmd: "curl -XPOST \"http://{{ username }}:{{ password }}@{{ masternode }}:5984/_cluster_setup\" 
+      --header \"Content-Type: application/json\"
+      --data '{\"action\": \"enable_cluster\", \"bind_address\":\"0.0.0.0\",
+             \"username\": \"{{ username }}\", \"password\":\"{{ password }}\", \"port\": \"5984\",
+             \"remote_node\": \"{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}\", \"node_count\": \"{{ node_count }}\",
+             \"remote_current_user\":\"{{ username }}\", \"remote_current_password\":\"{{ password }}\"}'"
+
+- name: second step
+  ansible.builtin.shell:
+    cmd: "curl -XPOST \"http://{{ username }}:{{ password }}@{{ masternode }}:5984/_cluster_setup\"
+      --header \"Content-Type: application/json\"
+      --data '{\"action\": \"add_node\", \"host\":\"{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}\",
+             \"port\": \"5984\", \"username\": \"{{ username }}\", \"password\":\"{{ password }}\"}'"
+
+
+
+
+
+
+
+
+#- name: first step
+  #ansible.builtin.uri:
+    #url: 'http://{{ username }}:{{ password }}@{{ masternode }}:5984/_cluster_setup'
+    #method: POST
+    #body_format: form-urlencoded
+    #body: 
+      #action: "enable_cluster" 
+      #bind_address: "0.0.0.0"
+      #username: "{{ username }}"
+      #password: "{{ password }}"
+      #port: "5984"
+      #remote_node: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+      #node_count: "{{ node_count }}"
+      #remote_current_user: "{{ username }}"
+      #remote_current_password: "{{ password }}"
+    #headers:
+      #Content-Type: application/json
+
+#- name: secone step
+  #ansible.builtin.uri:
+    #url: 'http://{{ username }}:{{ password }}@{{ masternode }}:5984/_cluster_setup'
+    #method: XPOST
+    #body_format: form-urlencoded
+    #body: 
+      #action: "add_node"
+      #host: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+      #port: "5984"
+      #username: "{{ username }}"
+      #password: "{{ password }}"
+    #headers:
+      #Content-Type: application/json
