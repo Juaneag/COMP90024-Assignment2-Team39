@@ -10,17 +10,17 @@
     - role: openstack-instance-master
     - role: openstack-instance-clusters
 
-#- hosts: CouchDBMaster
-  #gather_facts: true
-  #roles:
-    #- role: common
-    #- role: install-docker
+- hosts: CouchDBMaster
+  gather_facts: true
+  roles:
+    - role: common
+    - role: install-docker
 
-#- hosts: CouchDBClusters
-  #gather_facts: true
-  #roles:
-    #- role: common
-    #- role: install-docker
+- hosts: CouchDBClusters
+  gather_facts: true
+  roles:
+    - role: common
+    - role: install-docker
 
 - hosts: CouchDBMaster
   gather_facts: true
