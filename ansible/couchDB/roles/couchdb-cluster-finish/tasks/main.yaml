@@ -1,0 +1,7 @@
+# from workshop, change " to ' suggested by ChatGPT
+- name: finish cluster setup
+  ansible.builtin.shell:
+    cmd: "curl -XPOST \"http://{{ username }}:{{ password }}@{{ masternode }}:5984/_cluster_setup\"
+      --header \"Content-Type: application/json\" 
+      --data '{\"action\": \"finish_cluster\"}'"
+

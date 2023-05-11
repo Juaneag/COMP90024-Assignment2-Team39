@@ -9,16 +9,16 @@ from zipfile import ZipFile
 import os
 
 try:
-    os.remove('../mnt/preprocessed_zip.json')
+    os.remove('/log/preprocessed.json')
 except:
     pass
 
-out = open('../mnt/preprocessed_zip.json', 'a')
+out = open('/log/preprocessed.json', 'a')
 out.write('{\"data\": [')
 count = 1
 
 
-with ZipFile('../twitter-huge.json.zip', 'r') as zip:
+with ZipFile('./twitter-huge.json.zip', 'r') as zip:
     with zip.open(zip.namelist()[0]) as f:
         items = ijson.items(f, 'rows.item')
         for record in items:
@@ -32,8 +32,8 @@ with ZipFile('../twitter-huge.json.zip', 'r') as zip:
                 count += 1
             except:
                 continue
-            #if count == 100:
-                #break
+            if count == 100:
+                break
 
 
 out.write('], \"count\": \"' + str(count) + '\"}')          

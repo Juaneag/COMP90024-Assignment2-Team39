@@ -1,0 +1,11 @@
+# following method is from: https://serverfault.com/questions/39288/how-to-change-owner-of-mount-point
+# only shell command is from the above website
+# this two block is used only if want to use scp to upload files
+- name: Make user-ubuntu can write to mounted dir
+  become: true
+  ansible.builtin.shell:
+    chmod 777 /home/ubuntu/data
+- name: Make user-ubuntu can write to mounted dir
+  become: true
+  ansible.builtin.shell:
+    chown -R ubuntu.ubuntu /home/ubuntu/data

@@ -1,0 +1,13 @@
+[CouchDBMaster]
+
+[CouchDBMaster:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+ansible_ssh_private_key_file=~/Desktop/key/cloud.key
+ansible_user=ubuntu
+
+[CouchDBClusters]
+
+[CouchDBClusters:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+ansible_ssh_private_key_file=~/Desktop/key/cloud.key
+ansible_user=ubuntu
