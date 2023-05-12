@@ -24,6 +24,7 @@ mnt/preprocessed_zip.json
 preprocessing/test_output.py
 preprocessing/test_output.py
 preprocessing/test.ipynb
+__pycache__
 MastodonStream.py
 MastodonStream.py
 MastodonStream.py
