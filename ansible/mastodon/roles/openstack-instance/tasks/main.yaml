@@ -10,10 +10,9 @@
     key_name: "{{ instance_key_name }}"
     security_groups: ["default", "ssh", "port4369", "port5984", "port9100-9200"]
     timeout: 600
-    volumes: "{{ item.volumes }}"
     state: present
     wait: true
-  loop: "{{ master_instance }}"
+  loop: "{{ instance }}"
   register: os_instance
 
 - ansible.builtin.debug:

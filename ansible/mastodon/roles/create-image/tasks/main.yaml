@@ -1,0 +1,37 @@
+---
+- name: Create Dockerfile directory
+  become: true
+  ansible.builtin.file:
+    path: /home/ubuntu/
+    owner: root
+    group: root
+    state: directory
+    mode: '0755'
+
+- name: Copy Dockerfile
+  become: true
+  ansible.builtin.copy:
+    src: ./files/Dockerfile
+    dest: /home/ubuntu/
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Copy python script
+  become: true
+  ansible.builtin.copy:
+    src: ./files/MastodonStream.py
+    dest: /home/ubuntu/
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Create Image
+  become: true
+  community.docker.docker_image:
+    name: "{{ item.name }}-harvester"
+    build:
+      path: /home/ubuntu/server/{{ item.name }}
+    source: build
+    state: present
+  loop: "{{ server }}"

@@ -9,6 +9,10 @@
 
 - hosts: mastodonHarvester
   gather_facts: true
+  vars_files:
+    - host_vars/mrc.yaml
   roles:
     - role: common
-    - role: install-docker
+    #- role: install-docker
+    - role: Create-image
+    - role: deploy
