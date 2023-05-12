@@ -37,3 +37,6 @@ ansible/couchDB/output.txt
 ansible/couchDB/output.txt
 ansible/couchDB/output.txt
 .gitignore
+ansible/mastodon/get-pip.py
+ansible/mastodon/output.txt
+ansible/mastodon/unimelb-comp90024-2023-grp-39-openrc.sh

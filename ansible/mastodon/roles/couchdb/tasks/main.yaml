@@ -1,0 +1,50 @@
+# linux command line (mkdir -p PATH) follow instructions on https://www.javatpoint.com/linux-mkdir
+- name: Make dir store data
+  become: true
+  ansible.builtin.shell:
+    mkdir -p /home/ubuntu/data/couchdb
+  ignore_errors: true
+
+# following command line is suggested by ChatGPT
+# the suggestion is given when ask the problem when add -v to docker create, container is not open the port
+- name: Make dir have correct premission
+  become: true
+  ansible.builtin.shell:
+    chmod 777 /home/ubuntu/data/couchdb
+
+#- name: Create container
+  #become: true
+  #ansible.builtin.shell:
+    #docker create -p 5984:5984 -p 4369:4369 -p 9100:9100 -v /home/ubuntu/data/couchdb:/opt/couchdb/data
+      #--name couchdb{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
+      #--env COUCHDB_USER={{ username }}
+      #--env COUCHDB_PASSWORD={{ password }}
+      #--env COUCHDB_SECRET={{ cookie }}
+      #--env ERL_FLAGS="-setcookie {{ cookie }} -name couchdb@{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+      #ibmcom/couchdb3:{{ version }}
+  #ignore_errors: true
+
+#- name: Start container
+  #become: true
+  #ansible.builtin.shell:
+    #docker start couchdb{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
+  #ignore_errors: true
+
+
+- name: Create a couchdb container
+  become: true
+  community.docker.docker_container:
+    name: couchdb{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
+    image: ibmcom/couchdb3:3.2.1
+    detach: true
+    volumes:
+      - "/home/ubuntu/data/couchdb:/opt/couchdb/data"
+    ports:
+      - "5984:5984"
+      - "4369:4369"
+      - "9100:9100"
+    env:
+        COUCHDB_USER: "{{ username }}"
+        COUCHDB_PASSWORD: "{{ password }}"
+        COUCHDB_SECRET: "{{ cookie }}"
+        ERL_FLAGS: "-setcookie {{ cookie }} -name couchdb@{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
