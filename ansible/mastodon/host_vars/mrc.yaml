@@ -10,4 +10,10 @@ instance:
   - name: mastodon_harvester
 
 server:
-  - name: 'au'
+  - name: au
+    accesstoken: xlwor8z4sdp5t5l9D6Vm8DZyDJcP2wFs1oRX4fg35UA
+    url: https://mastodon.au
+  # add any more mastodon server with access token and url here to make instance stream data.
+  #- name: social
+    #accesstoken: i50KFLcB2pbjjBDd13VrGh6cVVhctO-PDbMic7EXjZs
+    #url: https://aus.social/

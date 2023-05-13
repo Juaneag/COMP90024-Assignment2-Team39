@@ -24,7 +24,8 @@ keywords = set([porterStemmer.stem(w) for w in keywords])
 stop_words = set(stopwords.words('english'))
 
 def nlp_content(content):
-    out = re.sub(r'https:\/\/[^\s]+', '', content.lower()) # remove link
+    out = re.sub(r'non-profit', 'nonprofit', content.lower())
+    out = re.sub(r'https:\/\/[^\s]+', '', out) # remove link
     out = re.sub(r'[^A-z\s]', ' ', out) # remove all english character words
     out = re.sub(r'\s+', ' ', out) # deal with multiple space
 
@@ -48,9 +49,17 @@ def convert_record(record):
     try:
         uid = record['account']['id']
         usr_name = record['account']['username']
+        try:
+            usr_note = nlp_content(record['account']['note'])
+        except:
+            usr_note = ''
+        #print(usr_note)
         original_content = BeautifulSoup(record['content'], 'html.parser').text
         content = nlp_content(original_content)
-        related = 0 if not determine_related(content=content) else 0
+        related = 0 if not determine_related(content=content) else 1
+        related_usr = 0 if not determine_related(content=usr_note) else 1
+        print(determine_related(content=usr_note))
+        #print(related_usr)
     except:
         return False
     try:
@@ -68,12 +77,14 @@ def convert_record(record):
     out['tags'] = tags
     out['time'] = time
     out['related'] = related
+    out['usr_related'] = related_usr
     return out
 
 with open('example.json', 'r') as f:
     data = json.load(f)
     for record in data:
         out = convert_record(record)
-        #print(out)
+        print(out)
+        break
         
 print(keywords)

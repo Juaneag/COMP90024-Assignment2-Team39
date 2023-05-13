@@ -4,9 +4,9 @@
   community.docker.docker_container:
     name: 
     image: "{{ item.name }}-harvester"
-    ports:
-      - "5984:5984"
-      - "4369:4369"
-      - "9100:9100"
-    command: ["python", "./MastodonStream.py", "https://mastodon.{{ item.name }}"]
+    #ports:
+      #- "5984:5984"
+      #- "4369:4369"
+      #- "9100:9100"
+    command: ["python", "./MastodonStream.py", "{{ item.url }}", "{{ item.accesstoken }}"]
   loop: "{{ server }}"

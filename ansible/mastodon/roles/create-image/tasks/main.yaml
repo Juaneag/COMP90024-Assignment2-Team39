@@ -31,7 +31,7 @@
   community.docker.docker_image:
     name: "{{ item.name }}-harvester"
     build:
-      path: /home/ubuntu/server/{{ item.name }}
+      path: /home/ubuntu/
     source: build
     state: present
   loop: "{{ server }}"
