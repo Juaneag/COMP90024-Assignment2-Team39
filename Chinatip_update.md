@@ -1,3 +1,8 @@
+# 17 May Update
+##  Backend
+- add backend code, use flask
+- add docker-compose file
+- currently, work with http://localhost:8296/healthcheck
 # 16 May Update
 ## Streamlit (frontend)
 - add map (retrieve mock data from couchDB)
