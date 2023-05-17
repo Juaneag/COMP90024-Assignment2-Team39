@@ -1,5 +1,13 @@
 import streamlit as st
 
-st.set_page_config(page_title="Home2", page_icon="📈")
-st.write("# Welcome to Streamlit! 👋")
-st.sidebar.success("Select a demo above.")
+st.set_page_config(page_title="Project Name", page_icon="📈")
+st.markdown('''
+# Project Name
+description
+
+### Topics
+- topic 1
+- topic 2
+- topic 3
+- topic 4
+''')

@@ -1,5 +1,6 @@
+# archived
+
 import json
-# from bs4 import BeautifulSoup
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
@@ -34,7 +35,11 @@ def nlp_content(content):
     return stemmed
 
 def check_keywords(tokens):
-    return any(item in keywords for item in tokens)
+    matched_words = []
+    for w in tokens:
+        if w in keywords:
+            matched_words += [w]
+    return matched_words
 
 def upload_twitter_data(file_path: str, batch_size: int, couchdb_endpoint: str, database: str)-> None:
     couch = Server(couchdb_endpoint)
@@ -56,18 +61,20 @@ def upload_twitter_data(file_path: str, batch_size: int, couchdb_endpoint: str, 
             content = tweet["doc"]["data"]["text"]
             
             tokens = nlp_content(content)
-            tweet_obj = {
-                "id": tweet["id"],
-                "author_id": tweet["doc"]["data"]["author_id"],
-                "time": tweet["doc"]["data"]["created_at"],
-                "location": tweet["doc"]["includes"]["places"][0]["full_name"].split(", "),
-                "content": tweet["doc"]["data"]["text"],
-                "tweet_tags": tweet["value"]["tags"],
-                "tweet_tokens": tweet["value"]["tokens"],
-                "nlp_content": tokens
-            }
 
-            if check_keywords(tweet_tokens_and_tags+tokens):
+            matched_keywords = check_keywords(tweet_tokens_and_tags + tokens)
+            if len(matched_keywords) > 0:
+                tweet_obj = {
+                    "id": tweet["id"],
+                    "author_id": tweet["doc"]["data"]["author_id"],
+                    "time": tweet["doc"]["data"]["created_at"],
+                    "location": tweet["doc"]["includes"]["places"][0]["full_name"].split(", "),
+                    "content": tweet["doc"]["data"]["text"],
+                    "matched_keywords": matched_keywords,
+                    "tweet_tags": tweet["value"]["tags"].split("|"),
+                    "tweet_tokens": tweet["value"]["tokens"].split("|"),
+                    "nlp_content": tokens
+                }
                 countMatchedKeywords += 1
                 records.append(Document({ "tweet" : tweet_obj }))
 
