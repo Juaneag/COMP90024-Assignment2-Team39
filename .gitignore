@@ -42,3 +42,9 @@ ansible/mastodon/output.txt
 ansible/mastodon/unimelb-comp90024-2023-grp-39-openrc.sh
 twitter/preprocessed.json
 twitter/data/sal.json
+SUDO/explor.py
+.gitignore
+SUDO/SD_Home_and_Community_Care_Program_2012-2013.json/sd_homeandcommunitycareprogram-metadata-6028118727243202092.json
+.gitignore
+SUDO/SD_Home_and_Community_Care_Program_2012-2013.json/sd_homeandcommunitycareprogram-7295892701380496778.json
+SUDO/SUDO.json
