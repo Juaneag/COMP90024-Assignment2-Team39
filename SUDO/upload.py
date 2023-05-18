@@ -9,10 +9,10 @@ begin = time.time()
 couch = couchdb.Server()
 couch = couchdb.Server('http://admin:admin@172.26.129.56:5984/')
 
-db = couchdb.Database(couch, 'sudo')
+db = couchdb.Database(couch, 'sa2')
 print('connected')
 
-path = 'SUDO.json'
+path = 'SUDO3.json'
 
 
 with open(path, 'r') as f:

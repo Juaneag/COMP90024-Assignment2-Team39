@@ -9,7 +9,7 @@
     image: "{{ instance_image }}"
     key_name: "{{ instance_key_name }}"
     # network: "{{ instance_network }}"
-    security_groups: ["default", "ssh", "port4369", "port5984", "port9100-9200"]
+    security_groups: ["default", "ssh", "port8296"]
     timeout: 600
     # volumes: "{{ item.volumes }}"
     state: present
