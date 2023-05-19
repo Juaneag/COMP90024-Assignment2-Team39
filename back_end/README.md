@@ -6,3 +6,6 @@
 ## normal docker run
 - docker build -t backend .
 - docker run -p 8296:8296 backend
+
+## run in local
+- python run.py

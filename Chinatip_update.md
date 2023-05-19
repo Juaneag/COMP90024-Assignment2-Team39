@@ -1,8 +1,18 @@
+# 19 May Update
+## Backend
+- add endpoint to fetchs data and views from couchDB
+    - sudo, twitter, mastodon
+
+# 18 May Update
+## Backend
+- deploy to server successfully
+
 # 17 May Update
-##  Backend
+## Backend
 - add backend code, use flask
 - add docker-compose file
 - currently, work with http://localhost:8296/healthcheck
+
 # 16 May Update
 ## Streamlit (frontend)
 - add map (retrieve mock data from couchDB)

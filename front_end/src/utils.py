@@ -1,8 +1,8 @@
 import couchdb
 
 def connectToDB():
-    couch = couchdb.Server('http://admin:admin@172.26.136.129:5984')
-    # couch = couchdb.Server('http://admin:1234@localhost:5984')
+    # couch = couchdb.Server('http://admin:admin@172.26.136.129:5984')
+    couch = couchdb.Server('http://admin:1234@localhost:5984')
     db_name = 'st-map-test-data'
 
     try:
