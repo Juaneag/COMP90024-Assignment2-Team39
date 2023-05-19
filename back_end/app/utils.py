@@ -10,8 +10,8 @@ def get_doc_name_and_view_from_type(db_name, type):
             TwitterDataType.UNRELATED_TWEETS: [ "state", "new-state" ]
         },
         DB_Name.MASTODON: {
-            MastodonDataType.RELATED_TOOTS: [ "count", "related_toot" ],
-            MastodonDataType.RELATED_USERS: [ "count", "related_user" ]
+            MastodonDataType.RELATED_TOOTS: [ "count", "relatetoot" ],
+            MastodonDataType.RELATED_USERS: [ "count", "relateusr" ]
         }
     }
     
