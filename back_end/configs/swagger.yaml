@@ -30,7 +30,6 @@ paths:
             description: SUDO data retrieved successfully
             schema:
               $ref: '#/definitions/sudo1Item'
-  
   /data/sudo2:
     get:
         operationId: app.flask.routes.sudo2
@@ -42,7 +41,6 @@ paths:
             description: SUDO data retrieved successfully
             schema:
               $ref: '#/definitions/sudo2Item'
-
   /data/twitter/state:
     get:
         operationId: app.flask.routes.twitter_state
@@ -53,8 +51,7 @@ paths:
           200:
             description: Twitter view data retrieved successfully
             schema:
-              $ref: '#/definitions/KeyValItem'
-
+              $ref: '#/definitions/KeyStrValItem'
   /data/twitter/tweets:
     get:
         operationId: app.flask.routes.twitter_tweets
@@ -66,8 +63,7 @@ paths:
             description: Twitter view data retrieved successfully
             schema:
               $ref: '#/definitions/KeyValItem'
-    
-    /data/mastodon/toots:
+  /data/mastodon/toots:
     get:
         operationId: app.flask.routes.mastodon_toots
         summary: Return aggregated count of tweets grouped by states
@@ -78,7 +74,6 @@ paths:
             description: Twitter view data retrieved successfully
             schema:
               $ref: '#/definitions/KeyValItem'
-
   /data/mastodon/users:
     get:
         operationId: app.flask.routes.mastodon_users
@@ -90,7 +85,6 @@ paths:
             description: Twitter view data retrieved successfully
             schema:
               $ref: '#/definitions/KeyValItem'
-
 definitions:
   sudo1Item:
     type: object
@@ -128,12 +122,21 @@ definitions:
         format: int32
       SA2_MAIN11:
         type: string
-  KeyValItem:
+  KeyStrValItem:
     type: array
     items:
       type: object
       properties:
         key:
           type: string
+        value:
+          type: integer
+  KeyValItem:
+    type: array
+    items:
+      type: object
+      properties:
+        key:
+          type: integer
         value:
           type: integer
