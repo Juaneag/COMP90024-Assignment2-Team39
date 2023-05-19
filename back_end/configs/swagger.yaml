@@ -19,7 +19,7 @@ paths:
                 message:
                   type: string
                   description: healthcheck message.
-  /data/sudo:
+  /data/sudo1:
     get:
         operationId: app.flask.routes.sudo1
         summary: Return list of sudo data
@@ -29,7 +29,19 @@ paths:
           200:
             description: SUDO data retrieved successfully
             schema:
-              $ref: '#/definitions/sudoItem'
+              $ref: '#/definitions/sudo1Item'
+  
+  /data/sudo2:
+    get:
+        operationId: app.flask.routes.sudo2
+        summary: Return list of sudo data
+        produces:
+          - application/json
+        responses:
+          200:
+            description: SUDO data retrieved successfully
+            schema:
+              $ref: '#/definitions/sudo2Item'
 
   /data/twitter/state:
     get:
@@ -80,7 +92,7 @@ paths:
               $ref: '#/definitions/KeyValItem'
 
 definitions:
-  sudoItem:
+  sudo1Item:
     type: object
     properties:
       hcc_cco_1_no_7_12_6_13:
@@ -99,6 +111,23 @@ definitions:
         type: number
       hcc_cns_1_no_7_12_6_13:
         type: number
+  sudo2Item:
+    type: object
+    properties:
+      P_Tot_Volunteer:
+        type: integer
+        format: int32
+      P_Tot_N_a_volunteer:
+        type: integer
+        format: int32
+      P_Tot_Voluntary_work_ns:
+        type: integer
+        format: int32
+      P_85ov_Volunteer:
+        type: integer
+        format: int32
+      SA2_MAIN11:
+        type: string
   KeyValItem:
     type: array
     items:

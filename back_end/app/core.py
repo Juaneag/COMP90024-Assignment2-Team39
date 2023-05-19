@@ -22,8 +22,8 @@ def connect_to_db(db_name):
         exit()
         return None
 
-def get_sudo_data():
-    db = connect_to_db(DB_Name.SUDO1.value)
+def get_sudo_data(db_name):
+    db = connect_to_db(db_name.value)
     data_from_couch_db = []
     for doc_id in db:
         doc = db[doc_id]
@@ -42,9 +42,9 @@ def get_aggregated_data(db_name, type):
     return result
 
 def fetch_data(db_name, type = None):
-    if db_name == DB_Name.SUDO1:
-        return get_sudo_data()
-    elif db_name == DB_Name.TWITTER and type is not None:
+    if db_name == DB_Name.SUDO1 or db_name == DB_Name.SUDO2:
+        return get_sudo_data(db_name)
+    elif (db_name == DB_Name.TWITTER or db_name == DB_Name.MASTODON) and type is not None:
         return get_aggregated_data(db_name, type)
     
     return None
