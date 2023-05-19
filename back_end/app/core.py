@@ -1,5 +1,6 @@
 import couchdb
 from app.constant import DB_Name
+from app.utils import get_doc_name_and_view_from_type
 
 def connect_to_db(db_name):
     couch = couchdb.Server('http://admin:admin@172.26.129.56:5984')
