@@ -9,7 +9,7 @@ paths:
   /healthcheck:
     get:
         operationId: app.flask.routes.healthcheck
-        summary: Returns a greeting.
+        summary: OK.
         responses:
           200:
             description: Successful response.
@@ -18,4 +18,129 @@ paths:
               properties:
                 message:
                   type: string
-                  description: Message greeting.
+                  description: healthcheck message.
+  /data/sudo1:
+    get:
+        operationId: app.flask.routes.sudo1
+        summary: Return list of sudo data
+        produces:
+          - application/json
+        responses:
+          200:
+            description: SUDO data retrieved successfully
+            schema:
+              $ref: '#/definitions/sudo1Item'
+  /data/sudo2:
+    get:
+        operationId: app.flask.routes.sudo2
+        summary: Return list of sudo data
+        produces:
+          - application/json
+        responses:
+          200:
+            description: SUDO data retrieved successfully
+            schema:
+              $ref: '#/definitions/sudo2Item'
+  /data/twitter/state:
+    get:
+        operationId: app.flask.routes.twitter_state
+        summary: Return aggregated count of tweets grouped by states
+        produces:
+          - application/json
+        responses:
+          200:
+            description: Twitter view data retrieved successfully
+            schema:
+              $ref: '#/definitions/KeyStrValItem'
+  /data/twitter/tweets:
+    get:
+        operationId: app.flask.routes.twitter_tweets
+        summary: Return aggregated count of related and unrelated tweets
+        produces:
+          - application/json
+        responses:
+          200:
+            description: Twitter view data retrieved successfully
+            schema:
+              $ref: '#/definitions/KeyValItem'
+  /data/mastodon/toots:
+    get:
+        operationId: app.flask.routes.mastodon_toots
+        summary: Return aggregated count of tweets grouped by states
+        produces:
+          - application/json
+        responses:
+          200:
+            description: Twitter view data retrieved successfully
+            schema:
+              $ref: '#/definitions/KeyValItem'
+  /data/mastodon/users:
+    get:
+        operationId: app.flask.routes.mastodon_users
+        summary: Return aggregated count of realted and unrelated tweets
+        produces:
+          - application/json
+        responses:
+          200:
+            description: Twitter view data retrieved successfully
+            schema:
+              $ref: '#/definitions/KeyValItem'
+definitions:
+  sudo1Item:
+    type: array
+    items:
+      type: object
+      properties:
+        hcc_cco_1_no_7_12_6_13:
+          type: number
+        hcc_dom_1_no_7_12_6_13:
+          type: number
+        area_code:
+          type: integer
+        area_name:
+          type: string
+        hcc_day_1_no_7_12_6_13:
+          type: number
+        hcc_toti_1_no_7_12_6_13:
+          type: number
+        hcc_mls_1_no_7_12_6_13:
+          type: number
+        hcc_cns_1_no_7_12_6_13:
+          type: number
+  sudo2Item:
+    type: array
+    items:
+      type: object
+      properties:
+        P_Tot_Volunteer:
+          type: integer
+          format: int32
+        P_Tot_N_a_volunteer:
+          type: integer
+          format: int32
+        P_Tot_Voluntary_work_ns:
+          type: integer
+          format: int32
+        P_85ov_Volunteer:
+          type: integer
+          format: int32
+        SA2_MAIN11:
+          type: string
+  KeyStrValItem:
+    type: array
+    items:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: integer
+  KeyValItem:
+    type: array
+    items:
+      type: object
+      properties:
+        key:
+          type: integer
+        value:
+          type: integer

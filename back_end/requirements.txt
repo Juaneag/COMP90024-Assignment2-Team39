@@ -5,3 +5,4 @@ gunicorn==20.1.0
 jsonpickle==2.0.0
 opencv-python==4.5.3.56
 flask-cors
+couchdb
