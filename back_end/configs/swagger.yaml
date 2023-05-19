@@ -87,41 +87,45 @@ paths:
               $ref: '#/definitions/KeyValItem'
 definitions:
   sudo1Item:
-    type: object
-    properties:
-      hcc_cco_1_no_7_12_6_13:
-        type: number
-      hcc_dom_1_no_7_12_6_13:
-        type: number
-      area_code:
-        type: integer
-      area_name:
-        type: string
-      hcc_day_1_no_7_12_6_13:
-        type: number
-      hcc_toti_1_no_7_12_6_13:
-        type: number
-      hcc_mls_1_no_7_12_6_13:
-        type: number
-      hcc_cns_1_no_7_12_6_13:
-        type: number
+    type: array
+    items:
+      type: object
+      properties:
+        hcc_cco_1_no_7_12_6_13:
+          type: number
+        hcc_dom_1_no_7_12_6_13:
+          type: number
+        area_code:
+          type: integer
+        area_name:
+          type: string
+        hcc_day_1_no_7_12_6_13:
+          type: number
+        hcc_toti_1_no_7_12_6_13:
+          type: number
+        hcc_mls_1_no_7_12_6_13:
+          type: number
+        hcc_cns_1_no_7_12_6_13:
+          type: number
   sudo2Item:
-    type: object
-    properties:
-      P_Tot_Volunteer:
-        type: integer
-        format: int32
-      P_Tot_N_a_volunteer:
-        type: integer
-        format: int32
-      P_Tot_Voluntary_work_ns:
-        type: integer
-        format: int32
-      P_85ov_Volunteer:
-        type: integer
-        format: int32
-      SA2_MAIN11:
-        type: string
+    type: array
+    items:
+      type: object
+      properties:
+        P_Tot_Volunteer:
+          type: integer
+          format: int32
+        P_Tot_N_a_volunteer:
+          type: integer
+          format: int32
+        P_Tot_Voluntary_work_ns:
+          type: integer
+          format: int32
+        P_85ov_Volunteer:
+          type: integer
+          format: int32
+        SA2_MAIN11:
+          type: string
   KeyStrValItem:
     type: array
     items:

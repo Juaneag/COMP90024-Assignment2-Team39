@@ -15,7 +15,6 @@ def connect_to_db(db_name):
     couch = couchdb.Server('http://admin:admin@172.26.129.56:5984')
 
     try:
-        print(couch[db_name])
         return couch[db_name]
     except couchdb.ResourceNotFound:
         print(f"Database '{db_name}' does not exist.")

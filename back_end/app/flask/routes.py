@@ -5,25 +5,19 @@ def healthcheck():
     return { "message" : "OK!" }
 
 def sudo1():
-    data = fetch_data(DB_Name.SUDO1)
-    return { "data": data }
+    return fetch_data(DB_Name.SUDO1)
 
 def sudo2():
-    data = fetch_data(DB_Name.SUDO2)
-    return { "data": data }
+    return fetch_data(DB_Name.SUDO2)
 
 def twitter_state():
-    data = fetch_data(DB_Name.TWITTER, TwitterDataType.STATE)
-    return data
+    return fetch_data(DB_Name.TWITTER, TwitterDataType.STATE)
 
 def twitter_tweets():
-    data = fetch_data(DB_Name.TWITTER, TwitterDataType.RELATED_TWEETS)
-    return data
+    return fetch_data(DB_Name.TWITTER, TwitterDataType.RELATED_TWEETS)
 
 def mastodon_toots():
-    data = fetch_data(DB_Name.MASTODON, MastodonDataType.RELATED_TOOTS)
-    return data
+    return fetch_data(DB_Name.MASTODON, MastodonDataType.RELATED_TOOTS)
 
 def mastodon_users():
-    data = fetch_data(DB_Name.MASTODON, MastodonDataType.RELATED_USERS)
-    return data
+    return fetch_data(DB_Name.MASTODON, MastodonDataType.RELATED_USERS)
