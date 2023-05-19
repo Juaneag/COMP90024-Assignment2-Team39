@@ -4,20 +4,23 @@ from app.constant import DB_Name, TwitterDataType, MastodonDataType
 def healthcheck():
     return { "message" : "OK!" }
 
-def sudo1():
-    return fetch_data(DB_Name.SUDO1)
+def data_home_and_community_care():
+    return fetch_data(DB_Name.HOME_AND_COMMUNITY_CARE)
 
-def sudo2():
-    return fetch_data(DB_Name.SUDO2)
+def data_voluntary_work():
+    return fetch_data(DB_Name.VOLUNTARY_WORK)
 
-def twitter_state():
-    return fetch_data(DB_Name.TWITTER, TwitterDataType.STATE)
+def data_unpaid_assistance():
+    return fetch_data(DB_Name.UNPAID_ASSISTANCE)
 
-def twitter_tweets():
+def data_twitter_related_tweets():
     return fetch_data(DB_Name.TWITTER, TwitterDataType.RELATED_TWEETS)
 
-def mastodon_toots():
+def data_twitter_unrelated_tweets():
+    return fetch_data(DB_Name.TWITTER, TwitterDataType.UNRELATED_TWEETS)
+
+def data_mastodon_toots():
     return fetch_data(DB_Name.MASTODON, MastodonDataType.RELATED_TOOTS)
 
-def mastodon_users():
+def data_mastodon_users():
     return fetch_data(DB_Name.MASTODON, MastodonDataType.RELATED_USERS)

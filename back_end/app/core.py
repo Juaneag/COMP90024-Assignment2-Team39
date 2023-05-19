@@ -1,15 +1,5 @@
 import couchdb
-from app.constant import DB_Name, TwitterDataType, MastodonDataType
-
-def get_doc_name_and_view_from_type(db_name, type):
-    if db_name == DB_Name.TWITTER:
-        if type == TwitterDataType.STATE:
-            return ("state", "state_view")
-    elif db_name == DB_Name.MASTODON:
-        if type == MastodonDataType.RELATED_TOOTS:
-            return ("count", "relatetoot")
-        elif type == MastodonDataType.RELATED_USERS:
-            return ("count", "relateusr")
+from app.constant import DB_Name
 
 def connect_to_db(db_name):
     couch = couchdb.Server('http://admin:admin@172.26.129.56:5984')
@@ -32,8 +22,11 @@ def get_sudo_data(db_name):
 
 def get_aggregated_data(db_name, type):
     db = connect_to_db(db_name.value)
-    (doc, view_name) = get_doc_name_and_view_from_type(db_name, type)
-    view_result = db.view(f'_design/{doc}/_view/{view_name}', group=True)
+    doc_and_view = get_doc_name_and_view_from_type(db_name, type)
+    if doc_and_view == None:
+        return None
+    
+    view_result = db.view(f'_design/{doc_and_view[0]}/_view/{doc_and_view[1]}', group=True)
 
     result = []
     for row in view_result:
@@ -41,9 +34,7 @@ def get_aggregated_data(db_name, type):
     return result
 
 def fetch_data(db_name, type = None):
-    if db_name == DB_Name.SUDO1 or db_name == DB_Name.SUDO2:
-        return get_sudo_data(db_name)
-    elif (db_name == DB_Name.TWITTER or db_name == DB_Name.MASTODON) and type is not None:
+    if (db_name == DB_Name.TWITTER or db_name == DB_Name.MASTODON) and type is not None:
         return get_aggregated_data(db_name, type)
     
-    return None
+    return get_sudo_data(db_name)

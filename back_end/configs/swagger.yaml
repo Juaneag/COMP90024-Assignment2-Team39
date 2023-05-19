@@ -19,31 +19,42 @@ paths:
                 message:
                   type: string
                   description: healthcheck message.
-  /data/sudo1:
+  /data/sudo/home_and_community_care:
     get:
-        operationId: app.flask.routes.sudo1
-        summary: Return list of sudo data
+        operationId: app.flask.routes.data_home_and_community_care
+        summary: Return list of sudo data for home and community care
         produces:
           - application/json
         responses:
           200:
             description: SUDO data retrieved successfully
             schema:
-              $ref: '#/definitions/sudo1Item'
-  /data/sudo2:
+              $ref: '#/definitions/HomeAndCommunityCareResponse'
+  /data/sudo/voluntary_work:
     get:
-        operationId: app.flask.routes.sudo2
-        summary: Return list of sudo data
+        operationId: app.flask.routes.data_voluntary_work
+        summary: Return list of sudo data for volutary work
         produces:
           - application/json
         responses:
           200:
             description: SUDO data retrieved successfully
             schema:
-              $ref: '#/definitions/sudo2Item'
-  /data/twitter/state:
+              $ref: '#/definitions/VoluntaryWorkResponse'
+  /data/sudo/unpaid_assistance:
     get:
-        operationId: app.flask.routes.twitter_state
+        operationId: app.flask.routes.data_unpaid_assistance
+        summary: Return list of sudo data for unpaid assistance
+        produces:
+          - application/json
+        responses:
+          200:
+            description: SUDO data retrieved successfully
+            schema:
+              $ref: '#/definitions/UnpaidAssistanceResponse'
+  /data/twitter/related:
+    get:
+        operationId: app.flask.routes.data_twitter_related_tweets
         summary: Return aggregated count of tweets grouped by states
         produces:
           - application/json
@@ -52,9 +63,9 @@ paths:
             description: Twitter view data retrieved successfully
             schema:
               $ref: '#/definitions/KeyStrValItem'
-  /data/twitter/tweets:
+  /data/twitter/unrelated:
     get:
-        operationId: app.flask.routes.twitter_tweets
+        operationId: app.flask.routes.data_twitter_unrelated_tweets
         summary: Return aggregated count of related and unrelated tweets
         produces:
           - application/json
@@ -62,10 +73,10 @@ paths:
           200:
             description: Twitter view data retrieved successfully
             schema:
-              $ref: '#/definitions/KeyValItem'
+              $ref: '#/definitions/KeyStrValItem'
   /data/mastodon/toots:
     get:
-        operationId: app.flask.routes.mastodon_toots
+        operationId: app.flask.routes.data_mastodon_toots
         summary: Return aggregated count of tweets grouped by states
         produces:
           - application/json
@@ -76,7 +87,7 @@ paths:
               $ref: '#/definitions/KeyValItem'
   /data/mastodon/users:
     get:
-        operationId: app.flask.routes.mastodon_users
+        operationId: app.flask.routes.data_mastodon_users
         summary: Return aggregated count of realted and unrelated tweets
         produces:
           - application/json
@@ -86,7 +97,7 @@ paths:
             schema:
               $ref: '#/definitions/KeyValItem'
 definitions:
-  sudo1Item:
+  HomeAndCommunityCareResponse:
     type: array
     items:
       type: object
@@ -107,7 +118,7 @@ definitions:
           type: number
         hcc_cns_1_no_7_12_6_13:
           type: number
-  sudo2Item:
+  VoluntaryWorkResponse:
     type: array
     items:
       type: object
@@ -125,6 +136,15 @@ definitions:
           type: integer
           format: int32
         SA2_MAIN11:
+          type: string
+  UnpaidAssistanceResponse:
+    type: array
+    items:
+      type: object
+      properties:
+        f_tot_no_upaid_assist_pvded:
+          type: integer
+        lga_code_2016:
           type: string
   KeyStrValItem:
     type: array
