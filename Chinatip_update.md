@@ -31,7 +31,7 @@
         - saved one list of all contents contained keywords in a record
 
 # 10 May Update
-## frontend
+## Frontend
 - add template for streamlit, consists of pages and board displays data from couchDB
 - update dockerfile
 - add docker-compose file, run on port 8501

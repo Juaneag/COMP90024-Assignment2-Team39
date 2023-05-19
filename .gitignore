@@ -42,7 +42,6 @@ ansible/mastodon/output.txt
 ansible/mastodon/unimelb-comp90024-2023-grp-39-openrc.sh
 twitter/preprocessed.json
 twitter/data/sal.json
-<<<<<<< Updated upstream
 SUDO/explor.py
 .gitignore
 SUDO/SD_Home_and_Community_Care_Program_2012-2013.json/sd_homeandcommunitycareprogram-metadata-6028118727243202092.json
@@ -75,6 +74,4 @@ ansible/backend/output.txt
 ansible/frontend/output.txt
 ansible/frontend/get-pip.py
 ansible/backend/get-pip.py
-=======
 note.txt
->>>>>>> Stashed changes
