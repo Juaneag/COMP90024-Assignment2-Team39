@@ -1,8 +1,8 @@
 # 20 May Update
 ## Frontend
-- Add note for visualization to present
-- Add map for showing related twitter data
-- Add stack bar for sudo voluntary work
+- Add map, stacked bar, bar charts
+- Deploy frontend
+- Update note and readme
 
 # 19 May Update
 ## Backend

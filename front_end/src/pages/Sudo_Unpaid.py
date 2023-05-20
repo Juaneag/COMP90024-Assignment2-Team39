@@ -1,17 +1,17 @@
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import get_url, DATA, state_name, aggregate_unpaid_assistance_data
+from utils import get_url, DATA, state_name, aggregate_unpaid_assistance_data, default_state_value
 
 st.set_page_config(page_title="Sudo Unpaid", page_icon="📈")
 st.markdown('''
 #### Sudo Unpaid
-Show total Females Total No unpaid assistance unpaid assistance for each state 
+Show total females unpaid assistance for each state 
 
 _from LGA-I09 Unpaid Assistance to a Person with a Disability by Age by Sex for Aboriginal & Torres Strait Islander Persons-Census 2016_
 ''')
 
-TOTAL = "Females Total No unpaid assistance"
+TOTAL = "Females total number unpaid assistance"
 
 def get_series_data(name, data):
     data_list = list(data.values())
@@ -33,7 +33,6 @@ if __name__ == '__main__':
     else:
         print("Error:", response.status_code)
 
-    default_state_value = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0}
     formatted_data = aggregate_unpaid_assistance_data(data)
     total_data = default_state_value
 

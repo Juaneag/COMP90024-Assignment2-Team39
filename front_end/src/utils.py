@@ -1,6 +1,9 @@
 from enum import Enum
 
 URL = "http://172.26.134.182:8296/data"
+
+default_state_value = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0}
+
 class DATA(Enum):
     HOME_AND_COMMNUNITY_CARE = "/sudo/home_and_community_care"
     VOLUNTARY_WORK = "/sudo/voluntary_work"
@@ -50,7 +53,6 @@ def aggregate_home_and_community_data(data):
             list[state]["hcc_toti_1_no_7_12_6_13"] += item["hcc_toti_1_no_7_12_6_13"] 
             list[state]["hcc_mls_1_no_7_12_6_13"] += item["hcc_mls_1_no_7_12_6_13"] 
             list[state]["hcc_cns_1_no_7_12_6_13"] += item["hcc_cns_1_no_7_12_6_13"] 
-    print(list)
     return map_to_key_value(list)
 
 def aggregate_volunteer_work_data(data):

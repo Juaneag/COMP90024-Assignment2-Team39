@@ -5,13 +5,15 @@ st.markdown('''
 # [COMP90024] Assignment 2 Team39
 
 ### Visualization
+- Combine related
+    - Compare all SUDO data and total tweets related to charity in each state 
 - Mastodon Compare Related
     - Compare related vs unrelated toots
-- Sudo Home And Community Care
+- SUDO Home And Community Care
     - Show total assistance count for each state
-- Sudo Unpaid
-    - Show total Females Total No unpaid assistance unpaid assistance for each state 
-- Sudo Volunteer Work
+- SUDO Unpaid
+    - Show total females unpaid assistance for each state 
+- SUDO Volunteer Work
     - Compare Volunteer work vs not a volunteer for each state
 - Twitter Compare Related
     - Compare Twitter data of related vs unrelated tweets with charity in each state

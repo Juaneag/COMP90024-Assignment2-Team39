@@ -2,7 +2,7 @@ import copy
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import DATA, get_url, state_name, aggregate_volunteer_work_data
+from utils import DATA, get_url, state_name, aggregate_volunteer_work_data, default_state_value
 
 st.set_page_config(page_title="Sudo Volunteer Work", page_icon="📈")
 st.markdown('''
@@ -35,7 +35,6 @@ if __name__ == '__main__':
     else:
         print("Error:", response.status_code)
 
-    default_state_value = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0}
     formatted_data = aggregate_volunteer_work_data(data)
     volunteer_data = copy.deepcopy(default_state_value)
     non_volunteer_data = copy.deepcopy(default_state_value)
