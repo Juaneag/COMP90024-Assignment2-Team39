@@ -1,8 +1,8 @@
 import streamlit as st
 
-st.set_page_config(page_title="Project Name", page_icon="📈")
+st.set_page_config(page_title="Home", page_icon="📈")
 st.markdown('''
-# Project Name
+# [COMP90024] Assignment 2 Team39
 description
 
 ### Topics
