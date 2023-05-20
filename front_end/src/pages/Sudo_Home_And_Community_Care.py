@@ -1,13 +1,17 @@
-import copy
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import DATA, get_url, state_name, aggregate_volunteer_work_data
+from utils import get_url, DATA, state_name, aggregate_home_and_community_data
 
-VOLUNTEER = "Volunteer"
-NONVOLUNTEER = "Non-Volunteer"
-st.set_page_config(page_title="show map with date from couchDB", page_icon="📈")
-st.write("page 2")
+st.set_page_config(page_title="Sudo Home And Community Care", page_icon="📈")
+st.markdown('''
+#### Sudo Home And Community Care
+Show total assistance count for each state
+
+_from SD Home and Community Care Program 2012-2013_
+''')
+
+TOTAL = "Total Instances of Assistance"
 
 def get_series_data(name, data):
     data_list = list(data.values())
@@ -22,7 +26,7 @@ def get_series_data(name, data):
 
 if __name__ == '__main__':
     data = []
-    url = get_url(DATA.VOLUNTARY_WORK)
+    url = get_url(DATA.HOME_AND_COMMNUNITY_CARE)
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
@@ -30,23 +34,20 @@ if __name__ == '__main__':
         print("Error:", response.status_code)
 
     default_state_value = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0}
-    formatted_data = aggregate_volunteer_work_data(data)
-    volunteer_data = copy.deepcopy(default_state_value)
-    non_volunteer_data = copy.deepcopy(default_state_value)
+    formatted_data = aggregate_home_and_community_data(data)
+    total_data = default_state_value
 
     for item in formatted_data:
-        volunteer_data[item["key"]] += item["value"]["P_Tot_Volunteer"]
-        non_volunteer_data[item["key"]] += item["value"]["P_Tot_N_a_volunteer"]
+        total_data[item["key"]] += round(item["value"]["hcc_toti_1_no_7_12_6_13"], 2)
 
     stacked_state_data = [
-        get_series_data(VOLUNTEER, volunteer_data),
-        get_series_data(NONVOLUNTEER, non_volunteer_data)
+        get_series_data(TOTAL, total_data),
     ]
 
     options = {
         "tooltip": {"trigger": "axis", "axisPointer": {"type": "shadow"}},
         "legend": {
-            "data": [VOLUNTEER, NONVOLUNTEER]
+            "data": [TOTAL]
         },
         "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
         "xAxis": {"type": "value"},

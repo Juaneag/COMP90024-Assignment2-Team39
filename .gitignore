@@ -70,3 +70,4 @@ ansible/frontend/output.txt
 ansible/frontend/get-pip.py
 ansible/backend/get-pip.py
 note.txt
+db_data.py
