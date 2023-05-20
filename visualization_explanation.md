@@ -51,4 +51,4 @@ _SUDO data explation are available in sudo_data_explanation.md_
 3. PieChart_1, Mastodon related vs unrelated
 4. [DONE] StackBar_1, [sa2] volunteer work vs not a volunteer for each state
 5. [DONE] Bar_1, [sudo] home and comnunity total assistance count for each state
-6. Bar_2, [unpaid] unpaid assistance for each state
+6. [DONE] Bar_2, [unpaid] unpaid assistance for each state
