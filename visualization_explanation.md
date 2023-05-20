@@ -9,11 +9,11 @@ _SUDO data explation are available in sudo_data_explanation.md_
         - Map_1, show different by value for each state
             - position of data is centered of each state
             - tooltip shows state name and count related tweets for each state
-        - StackBar_1, a stacked bar of TWITTER_RELATED vs TWITTER_UNRELATED by state
+        - StackBar_0, a stacked bar of TWITTER_RELATED vs TWITTER_UNRELATED by state
 2. TWITTER_UNRELATED = "/twitter/unrelated"
     - tweets with related=0 grouped by each state
     - Visualization
-        - StackBar_1, a stacked bar of TWITTER_RELATED vs TWITTER_UNRELATED by state
+        - StackBar_0, a stacked bar of TWITTER_RELATED vs TWITTER_UNRELATED by state
 # Mastodon Data
 1. MASTODON_TOOTS = "/mastodon/toots"
     - get related and unrelated count for toots
@@ -37,7 +37,7 @@ _SUDO data explation are available in sudo_data_explanation.md_
         - P_Tot_N_a_volunteer - Persons Total Not a volunteer
         - P_Tot_Voluntary_work_ns - Persons Total Voluntary work not stated.
     - Visualization
-        - StackBar_2, volunteer(P_Tot_Volunteer) vs not a volunteer (P_Tot_N_a_volunteer)
+        - StackBar_1, volunteer(P_Tot_Volunteer) vs not a volunteer (P_Tot_N_a_volunteer)
 3. UNPAID_ASSISTANCE = "/sudo/unpaid_assistance"
     - unpaid assistance data, grouped by state in frontend
     - field use
@@ -47,8 +47,8 @@ _SUDO data explation are available in sudo_data_explanation.md_
 
 # Summary
 1. Map_1, Twitter data of related tweets with charity in each state
-2. StackBar_1, Twitter data of related vs unrelated tweets with charity in each state
+2. **StackBar_0, Twitter data of related vs unrelated tweets with charity in each state
 3. PieChart_1, Mastodon related vs unrelated
-4. StackBar_2, [sa2] volunteer work vs not a volunteer for each state
+4. StackBar_1, [sa2] volunteer work vs not a volunteer for each state
 5. Bar_1, [sudo] home and comnunity total assistance count for each state
 6. Bar_2, [unpaid] unpaid assistance for each state

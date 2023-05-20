@@ -1,5 +1,12 @@
+# 20 May Update
+## Frontend
+- Add note for visualization to present
+- Add map for showing related twitter data
+- Add stack bar for sudo voluntary work
+
 # 19 May Update
 ## Backend
+- add note for sudo data detail and its fields
 - add endpoint to fetchs data and views from couchDB
     - sudo, twitter, mastodon
 

@@ -10,6 +10,18 @@ class DATA(Enum):
     MASTODON_TOOTS = "/mastodon/toots"
     MASTODON_USERS = "/mastodon/users"
 
+state_name = {
+    1 : "New South Wales",
+    2 : "Victoria",
+    3 : "Queensland",
+    4 : "Western Australia",
+    5 : "South Australia",
+    6 : "Tasmania",
+    7 : "Northern Territory",
+    8 : "Australian Capital Territory",
+    9 : "Other",
+}
+
 def get_url(data):
     return URL + data.value
 

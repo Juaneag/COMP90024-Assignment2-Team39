@@ -2,8 +2,7 @@ import streamlit as st
 import pydeck as pdk
 import requests
 import streamlit as st
-from utils import DATA, get_url, aggregate_home_and_community_data
-from db_data import twitter_related
+from utils import DATA, get_url
 
 state_location = {
     "1": { "latitude": -32.0, "longitude": 147.0, "state_name": "New South Wales" },
