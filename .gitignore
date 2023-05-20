@@ -70,3 +70,12 @@ ansible/frontend/output.txt
 ansible/frontend/get-pip.py
 ansible/backend/get-pip.py
 note.txt
+couchDB/test.py
+couchDB/test_import.py
+couchDB/upload_filtered_tweets_content_db.py
+couchDB/upload_filtered_tweets_db.py
+mastodon/environment.yml
+mastodon/nlp.py
+mastodon/test.py
+mastodon/example.json
+preprocessing
