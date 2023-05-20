@@ -4,6 +4,12 @@ import requests
 import streamlit as st
 from utils import DATA, get_url
 
+st.set_page_config(page_title="Twitter Related", page_icon="📈")
+st.markdown('''
+#### Twitter Related
+Show Twitter data of related tweets with charity in each state
+''')
+
 state_location = {
     "1": { "latitude": -32.0, "longitude": 147.0, "state_name": "New South Wales" },
     "2": { "latitude": -36.75, "longitude": 144.75, "state_name": "Victoria" },
@@ -46,9 +52,12 @@ if __name__ == '__main__':
             pdk.Layer(
                 'ScatterplotLayer',
                 data=chart_data,
+                opacity=0.5,
                 get_position=["longitude", "latitude"],
                 get_fill_color="[255 * (10 - value / 100), 255 * (value / 100), 0, 255]",
                 get_radius="value*100",
+                line_width_min_pixels=1,
+                get_line_color=[0, 0, 0],
                 elevation_scale=4,
                 elevation_range=[0, 1000],
                 pickable=True,

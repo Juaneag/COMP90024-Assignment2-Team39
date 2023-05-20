@@ -70,6 +70,7 @@ ansible/frontend/output.txt
 ansible/frontend/get-pip.py
 ansible/backend/get-pip.py
 note.txt
+db_data.py
 couchDB/test.py
 couchDB/test_import.py
 couchDB/upload_filtered_tweets_content_db.py
