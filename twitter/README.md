@@ -74,3 +74,5 @@ Similar to [mastodon](../mastodon/README.md#acknowledgement-and-reference)
 - couchdb package documentation: https://pypi.org/project/CouchDB2/
   and https://couchdb-python.readthedocs.io/en/latest/client.html#database
 - ED discussion: https://edstem.org/au/courses/11705/discussion/
+- deal with zip file: https://stackoverflow.com/questions/40824807/reading-zipped-json-files
+- convert decimal in json: https://stackoverflow.com/questions/1960516/python-json-serialize-a-decimal-object
