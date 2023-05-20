@@ -46,9 +46,9 @@ _SUDO data explation are available in sudo_data_explanation.md_
         - Bar_2, unpaid assistance(f_tot_no_upaid_assist_pvded) for each state
 
 # Summary
-1. Map_1, Twitter data of related tweets with charity in each state
+1. [DONE] Map_1, Twitter data of related tweets with charity in each state
 2. **StackBar_0, Twitter data of related vs unrelated tweets with charity in each state
 3. PieChart_1, Mastodon related vs unrelated
-4. StackBar_1, [sa2] volunteer work vs not a volunteer for each state
+4. [DONE] StackBar_1, [sa2] volunteer work vs not a volunteer for each state
 5. Bar_1, [sudo] home and comnunity total assistance count for each state
 6. Bar_2, [unpaid] unpaid assistance for each state
