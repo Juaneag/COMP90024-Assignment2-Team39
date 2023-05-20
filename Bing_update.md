@@ -1,3 +1,26 @@
+# Update
+
+In ansible floder: 
+- frontend and backend only create correspomding instances with docker for now. 
+- couchDB create 3 (or more, need to update the var) instances, create couchdb container in each instances, set these three as a cluster.
+- mastodon create 1 instance, create 1 (or more, need to update the var) containers as mastodon data harvester. The data go straight into couchDB.
+
+In couchDB floder:
+- docker_setup is not used. It contains all command to run in command line to set up couchDB clusters, if not using Ansible.
+
+In mastodon floder:
+- MastodonStream.py is the mastodon harvester take server url and access token when run.
+- Dockerfile is used to create mastodon harvester container image.
+- Both 2 files are also in ansible/mastodon, and copied to instance when run ansible playbook.
+
+In SUDO floder:
+- upload.py is the script used to upload sudo data to couchdb.
+
+In twitter floder:
+- preprocess.py is the script used to preprocess huge tiwtter data
+- upload.py is the script used to upload data into couchdb
+
+
 # 8 May Update
 
 ## Ansible
