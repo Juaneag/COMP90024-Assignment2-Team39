@@ -6,7 +6,7 @@
 # sys argvs trick by: https://www.youtube.com/watch?v=EYNwNlOrpr0
 # couchdb package documentation: https://pypi.org/project/CouchDB2/
 ###########################################################################################################################################################################
-# NB: Need to pass in sys argv, e.g. 'https://mastodon.au'
+# NB: Need to pass in sys argv, e.g. 'https://mastodon.au' and access tokens.
 
 import sys
 from mastodon import Mastodon, MastodonNotFoundError, MastodonRatelimitError, StreamListener

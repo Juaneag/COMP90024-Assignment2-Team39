@@ -12,4 +12,4 @@ RUN pip install regex
 
 COPY MastodonStream.py ./
 
-CMD ["python", "./MastodonStream.py", "https://mastodon.au"]
+#CMD ["python", "./MastodonStream.py", "https://mastodon.au"]
