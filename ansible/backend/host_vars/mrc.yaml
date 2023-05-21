@@ -4,6 +4,14 @@ instance_image: bbaf16f8-2484-48d7-b455-42209cc4b8d2
 instance_key_name: cloud
 instance_flavor: uom.mse.1c4g
 
+security_groups:
+  - name: port8296
+    description: "open port 8296"
+    protocol: tcp
+    port_range_min: 8296
+    port_range_max: 8296
+    remote_ip_prefix: 0.0.0.0/0
+
 # Instance
 instances:
   - name: backend
