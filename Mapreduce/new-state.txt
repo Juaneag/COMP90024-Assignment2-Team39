@@ -1,0 +1,14 @@
+Map Function:
+function (doc) {
+  if (doc.state >= 1 && doc.state <= 9 && doc.related === 0) {
+    emit(doc.state, 1);
+  }
+}
+
+Coustom Reduce Function:
+function (keys, values, rereduce) {
+  return sum(values);
+}
+
+Command To run view the following view:
+curl http://admin:admin@172.26.129.56:5984/twitter/_design/state/_view/new-state?group=true

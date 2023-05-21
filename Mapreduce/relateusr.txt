@@ -1,0 +1,10 @@
+Map Function:
+function (doc) {
+  emit(doc.usr_related, 1);
+}
+
+Reduce:
+_sum
+
+Command to run the following view:
+curl http://admin:admin@172.26.129.56:5984/mastodon/_design/count/_view/relateusr
