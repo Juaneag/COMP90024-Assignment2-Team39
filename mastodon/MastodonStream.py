@@ -33,12 +33,17 @@ import re
 nltk.download('punkt')
 nltk.download('stopwords')
 
+# Variables
+COUCHDB_MASTER_NODE = 'http://admin:admin@172.26.129.56:5984/'
+DATA_BASE = 'mastodon'
+
+
 # connect to couchdb and database
 couch = couchdb.Server()
 
-couch = couchdb.Server('http://admin:admin@172.26.129.56:5984/')
+couch = couchdb.Server(COUCHDB_MASTER_NODE)
 
-db = couchdb.Database(couch, 'mastodon')
+db = couchdb.Database(couch, DATA_BASE)
 
 # connect to mastodon server
 m = Mastodon(api_base_url=sys.argv[1], access_token=sys.argv[2])

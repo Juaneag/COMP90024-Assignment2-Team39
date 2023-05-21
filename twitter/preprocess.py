@@ -30,6 +30,11 @@ import os
 nltk.download('punkt')
 nltk.download('stopwords')
 
+# variables
+SAL_PATH = 'data/sal.json'
+output_path = 'preprocessed.json'
+INPUT_PATH = 'data/twitter-huge.json.zip'
+
 
 # create keywords dictionary, do stemmer step by nltk
 keywords = ["voluntary", "volunteer", "volunteering", "nonprofit", "charity", "donor", "donation", "unpaid", "rendering", "bestowing", "volitional"]
@@ -139,7 +144,7 @@ def convert_record(record):
 '''
 load sal.json file. Use Bingguang and Arezoo's code for Assignment 1.
 '''
-with open('data/sal.json') as fsal:
+with open(SAL_PATH) as fsal:
     sal_items = ijson.items(fsal, '')
     state_dict = {'1': [], '2': [], '3': [], '4': [], '5': [], '6': [], '7': [], '8': [], '9': []}
     for item in sal_items:
@@ -149,7 +154,7 @@ with open('data/sal.json') as fsal:
 
 
 # write processed data into preprocessed.json
-output_path = 'preprocessed.json'
+#output_path = 'preprocessed.json'
 
 try:
     os.remove(output_path)
@@ -162,7 +167,7 @@ out = open(output_path, 'a')
 out.write('[')
 count = 1
 
-with ZipFile('data/twitter-huge.json.zip', 'r') as zip:
+with ZipFile(INPUT_PATH, 'r') as zip:
     with zip.open(zip.namelist()[0]) as f:
         items = ijson.items(f, 'rows.item')
         for record in items:

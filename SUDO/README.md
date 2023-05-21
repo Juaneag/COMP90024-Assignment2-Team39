@@ -6,13 +6,19 @@ This floder, upload the SUDO data. No process is done, just upload.
 
 ## How to run
 
+change IP address of master node of couchDB in upload.py
+```python
+COUCHDB_MASTER_NODE = 'http://admin:admin@{IP}:5984/'
+```
+where {IP} is IP of couchDBMaster
+
 ```bash
 python3 upload.py
 ```
 
 ***NOTE:*** for different SUDO data, change DB name and data path in upload.py:
 ```python
-db = couchdb.Database(couch, 'TARGET_DB')
+DATA_BASE = 'TARGET_DB'
 ```
 and 
 ```python

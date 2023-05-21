@@ -38,6 +38,8 @@ This instruction only contains high level information to deploy the system, for 
 
 - Logon to MRC, go to the right project. In Network, Security groups, create corresponding Security groups as described [here in step 3](./ansible/README.md#how-to-run).
 - Setup couchDB cluster:
+  - Create one instance as couchDB master node, name is couchDBMatser, record its IP.
+  - Change variables accordingly as directed [here](./ansible/README.md#couchdb)
   - In terminal, go to _/ansible/couchDB/_:
     ```bash
     cd ansible/couchDB
@@ -48,22 +50,25 @@ This instruction only contains high level information to deploy the system, for 
     ```bash
     cd twitter
     ```
-  - make sure data is in correct path
+  - make sure data is in correct path, or the path variable is changed accordingly
+  - change IP address of master node of couchDB (recoreded above) in upload.py as [directed](./twitter/README.md#how-to-run)
   - in terminal run:
     ```bash
     python3 preprocess.py
     ```
-  - then in terminal run:
+    and 
     ```bash
     python3 upload.py
     ```
-  - ***Note:*** the whole process might take a while, depend on the size of twitter data.
+  ***Note:*** the whole process might take a while, depend on the size of twitter data. Few times of the given huge twitter data size will work on this code (i.e. few hunduard GiB json/ 100 GiB zip file).
 - Import SUDO data (stable json file) to couchDB cluster, detailed instruction is [here](./SUDO/README.md#how-to-run)
   - go to correct floder:
     ```bash
     cd SUDO
     ```
-  - make sure change the python script correspondingly as [instructed](./SUDO/README.md#how-to-run)
+  - change IP address of master node of couchDB (recoreded above) in upload.py files as [directed](./SUDO/README.md#how-to-run)
+  
+    And make sure change the python script correspondingly as [instructed](./SUDO/README.md#how-to-run)
   - in terminal run:
     ```bash
     python3 upload.py
@@ -73,9 +78,10 @@ This instruction only contains high level information to deploy the system, for 
     ```bash
     cd ansible/mastodon
     ```
+  - change IP address of master node of couchDB (recoreded above) in upload.py files as described in [addinitional step](./ansible/README.md#addinitional-step)
   - make sure change the variable yaml file as [instructed](./ansible/README.md#mastodon)
   - Follow instruction on how to run Ansible notebook [here](./ansible/README.md#how-to-run)
-- Create MapReduce View by method mentioned [here](./couchDB/)
+- Create MapReduce View by method mentioned [here](./Mapreduce/)
 - Create backend instance and deploy backend app:
   - Create instance for backend app, first go to corresponding floder, detailed instruction is [here](./ansible/README.md#how-to-run):
     ```bash

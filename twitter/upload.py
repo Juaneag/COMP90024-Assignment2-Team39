@@ -7,6 +7,11 @@ import couchdb2 as couchdb
 import ijson
 import time
 
+# variables
+COUCHDB_MASTER_NODE = 'http://admin:admin@172.26.129.56:5984/'
+DATA_BASE = 'twitter'
+path = 'preprocessed.json'
+
 '''
 import twitter data to couchDB. Print current state while running
 '''
@@ -14,13 +19,12 @@ import twitter data to couchDB. Print current state while running
 begin = time.time()
 
 couch = couchdb.Server()
-couch = couchdb.Server('http://admin:admin@172.26.129.56:5984/')
+couch = couchdb.Server(COUCHDB_MASTER_NODE)
 
-db = couchdb.Database(couch, 'twitter')
+db = couchdb.Database(couch, DATA_BASE)
 print('connected')
 
-path = 'preprocessed.json'
-    
+
 
        
 with open(path, 'r') as f:

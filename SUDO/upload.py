@@ -11,14 +11,17 @@ from uuid import uuid4
 
 begin = time.time() # to record time
 
+# variables
+COUCHDB_MASTER_NODE = 'http://admin:admin@172.26.129.56:5984/'
+DATA_BASE = 'sa2'
+path = 'SUDO3.json'
+
 # connect to couchDB server and database
 couch = couchdb.Server()
-couch = couchdb.Server('http://admin:admin@172.26.129.56:5984/')
+couch = couchdb.Server(COUCHDB_MASTER_NODE)
 
-db = couchdb.Database(couch, 'sa2')
+db = couchdb.Database(couch, DATA_BASE)
 print('connected')
-
-path = 'SUDO3.json'
 
 # import data
 with open(path, 'r') as f:

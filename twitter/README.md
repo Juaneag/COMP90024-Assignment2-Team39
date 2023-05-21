@@ -21,10 +21,15 @@ The data is given in dropbox, which is over 12 GiB as zip file and over 60 GiB a
 
 ## How to run
 
-- make sure twitter data is in following path and ***DON'T UNZIP IT***: 
+- make sure twitter data is in following path and ***DON'T UNZIP IT***, OR change INPUT_PATH in preprocess to the zip file: 
   ```
   ./data/twitter-huge.json.zip
   ```
+- change IP address of master node of couchDB in upload.py
+    ```python
+    COUCHDB_MASTER_NODE = 'http://admin:admin@{IP}:5984/'
+    ```
+    where {IP} is IP of couchDBMaster
 - in terminal, run:
   ```bash
   python3 preprocess.py
@@ -35,6 +40,17 @@ The data is given in dropbox, which is over 12 GiB as zip file and over 60 GiB a
   python3 upload.py
   ```
   to upload twitter data onto couchDB
+
+-----------------------------------------
+
+On instance:
+
+It is also possible to run the twitter data process and import to couchDB on instances:
+
+- copy script to instance by scp
+- download twitter data on instance through wget
+- run exact same process above.
+
 
 ## Rule
 
@@ -60,7 +76,9 @@ Split preprocessed.json into parts, each part contain 10000 records. Upload one 
 
 ### Whole Process
 
-Consider twitter data is past data will not change in size, content. Hence, it doesn't matter where to deploy this process. Our choose is to do it loaclly considered to the hardware.
+Consider twitter data is past data will not change in size, content. Hence, it doesn't matter where to deploy this process. Our choice is to do it loaclly since the twitter data is not huge. 
+
+If twitter data size increase a lot, i.e. more than hundurds GiB, then better to run it on instance with volume mounted to.
 
 ## Acknowledgement and Reference
 

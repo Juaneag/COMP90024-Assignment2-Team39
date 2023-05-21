@@ -25,6 +25,7 @@ Each Ansible playbook expected to create instance(s), intsall docker on instance
     - [Step 2](#step-2)
       - [Detailed Steps:](#detailed-steps)
     - [Step 3](#step-3)
+    - [Addinitional Step](#addinitional-step)
     - [Step 4](#step-4)
     - [Step 5](#step-5)
   - [Folders](#folders)
@@ -106,6 +107,17 @@ Make sure following Security Groups is already created and have **exact same** n
 - port9100-9200: open ports 9100-9200 ingress, for couchDB cluster
 - port8269: open port 8269 ingress, for backend
 - port8501: open port 8501 ingress, for frontend
+
+### Addinitional Step
+
+This step is only for mastodon harvester playbook and only need to do it when first run or deploy brand new couchDB clusters.
+
+To set the master node of the couchDB Cluster:
+
+In _./ansible/mastodon/roles/create-image/files/MastodonStream.py_, change:
+```python
+COUCHDB_MASTER_NODE = 'http://admin:admin@{couchDBMaster_IP}:5984/'
+```
 
 ### Step 4
 
