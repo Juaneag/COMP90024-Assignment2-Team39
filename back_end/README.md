@@ -19,5 +19,9 @@
 - go to instance server & make sure it can login docker
     - sudo chmod 666 /var/run/docker.sock
 - pull and keep it running in the background
+    - docker login -u USERNAME
     - docker pull USERNAME/REPO_NAME
     - docker run -t -d -p 8296:8296 USERNAME/REPO_NAME
+    - docker logout
+
+for current package available in chinatipk/backend

@@ -1,8 +1,7 @@
-import copy
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import DATA, get_url, state_name, aggregate_volunteer_work_data, default_state_value
+from utils import DATA, get_url, state_name, aggregate_volunteer_work_data, get_default_state_value, get_series_data
 
 st.set_page_config(page_title="Sudo Volunteer Work", page_icon="📈")
 st.markdown('''
@@ -15,17 +14,6 @@ _from SA2-based B19 Voluntary Work for an Organisation or Group by Age by Sex as
 VOLUNTEER = "Volunteer"
 NONVOLUNTEER = "Non-Volunteer"
 
-def get_series_data(name, data):
-    data_list = list(data.values())
-    return {
-        "name": name,
-        "type": "bar",
-        "stack": "total",
-        "label": {"show": True},
-        "emphasis": {"focus": "series"},
-        "data": data_list,
-    }
-
 if __name__ == '__main__':
     data = []
     url = get_url(DATA.VOLUNTARY_WORK)
@@ -36,8 +24,8 @@ if __name__ == '__main__':
         print("Error:", response.status_code)
 
     formatted_data = aggregate_volunteer_work_data(data)
-    volunteer_data = copy.deepcopy(default_state_value)
-    non_volunteer_data = copy.deepcopy(default_state_value)
+    volunteer_data = get_default_state_value()
+    non_volunteer_data = get_default_state_value()
 
     for item in formatted_data:
         volunteer_data[item["key"]] += item["value"]["P_Tot_Volunteer"]
