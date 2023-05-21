@@ -110,7 +110,7 @@ Make sure following Security Groups is already created and have **exact same** n
 
 ### Addinitional Step
 
-This step is only for mastodon harvester playbook and only need to do it when first run or deploy brand new couchDB clusters.
+This step is only for mastodon harvester playbook and only need to do it the first time run or deploy brand new couchDB clusters.
 
 To set the master node of the couchDB Cluster:
 
@@ -118,6 +118,8 @@ In _./ansible/mastodon/roles/create-image/files/MastodonStream.py_, change:
 ```python
 COUCHDB_MASTER_NODE = 'http://admin:admin@{couchDBMaster_IP}:5984/'
 ```
+
+No need to repeat this when scale to have more harvesters.
 
 ### Step 4
 
