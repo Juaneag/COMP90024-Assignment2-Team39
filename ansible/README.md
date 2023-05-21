@@ -37,6 +37,9 @@ Each Ansible playbook expected to create instance(s), intsall docker on instance
     - [backend](#backend)
     - [frontend](#frontend)
   - [Scalable Discussion](#scalable-discussion)
+    - [Mastodon](#mastodon-1)
+    - [couchDB](#couchdb-1)
+    - [Frontend](#frontend-1)
   - [Acknowledgement and Reference](#acknowledgement-and-reference)
 
 
@@ -173,9 +176,29 @@ Then run the playbook as [instructions](#how-to-run) in above section.
 
 ### backend
 
+The Ansible playbook just create instance with proper security group. It can be extended to deploy whole backend app since it is already in container. Here are two ways:
+- upload whole back_end floder onto instances, create container with dockerfile or docker compose.
+- push image to docker hub, pull image in instance.
+
+Our group choose second method so that source code is not on instance. And in this case, no difference between deploy manually on instance or by playbook since only one backend app needed to deploy.
+
 ### frontend
 
+Similar situation as backend.
+
 ## Scalable Discussion
+
+### Mastodon
+
+Note that any new harvester is a container and will be run in single instance ***mastodon_harvester***. Since Mastodon harvester container stream the data, single instance should be enough for this task. The ability to harvest more server can be done by one run.
+
+### couchDB
+
+Note that any new couchDB node is a container and will be run in brand new (its own) instance. The assumption is: this step is supposed to be done at first so no data already in couchDB cluster.
+
+### Frontend
+
+Since frontend is in own container, it is possible to shut down frontend and update. While couchDB, backend, harvester will not be effected.
 
 ## Acknowledgement and Reference
 
