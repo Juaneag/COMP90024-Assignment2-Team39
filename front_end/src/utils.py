@@ -2,7 +2,8 @@ from enum import Enum
 
 URL = "http://172.26.134.182:8296/data"
 
-default_state_value = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0}
+def get_default_state_value():
+    return {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0}
 
 class DATA(Enum):
     HOME_AND_COMMNUNITY_CARE = "/sudo/home_and_community_care"

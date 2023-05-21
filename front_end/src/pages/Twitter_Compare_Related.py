@@ -1,8 +1,7 @@
-import copy
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import DATA, get_url, state_name, default_state_value, get_series_data
+from utils import DATA, get_url, state_name, get_series_data, get_default_state_value
 
 st.set_page_config(page_title="Twitter Compare Related", page_icon="📈")
 st.markdown('''
@@ -27,8 +26,8 @@ if __name__ == '__main__':
         print("Error:", response_related.status_code)
         print("Error:", response_unrelated.status_code)
 
-    volunteer_data = copy.deepcopy(default_state_value)
-    non_volunteer_data = copy.deepcopy(default_state_value)
+    volunteer_data = get_default_state_value()
+    non_volunteer_data = get_default_state_value()
 
     for item in data_related:
         volunteer_data[item["key"]] += item["value"]

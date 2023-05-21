@@ -1,3 +1,8 @@
+# 21 May Update
+- Refactor and fix overlap label for combine related chart
+- Fix stacked bar showing incorrect data for showing more than 2 type of data
+- Redeploy frontend
+
 # 20 May Update
 ## Frontend
 - Add map, stacked bar, bar charts
@@ -7,7 +12,7 @@
 # 19 May Update
 ## Backend
 - add note for sudo data detail and its fields
-- add endpoint to fetchs data and views from couchDB
+- add endpoints to fetch data and views from couchDB
     - sudo, twitter, mastodon
 
 # 18 May Update

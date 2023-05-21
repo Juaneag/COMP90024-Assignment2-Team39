@@ -1,8 +1,7 @@
-import copy
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import DATA, get_url, default_state_value, state_name, aggregate_unpaid_assistance_data, aggregate_home_and_community_data, aggregate_volunteer_work_data, get_series_data
+from utils import DATA, get_url, get_default_state_value, state_name, aggregate_unpaid_assistance_data, aggregate_home_and_community_data, aggregate_volunteer_work_data, get_series_data
 
 st.set_page_config(page_title="Combine Related", page_icon="📈")
 st.markdown('''
@@ -34,10 +33,10 @@ if __name__ == '__main__':
     else:
         print("Error: Failed to load data")
 
-    related_twitter_data = copy.deepcopy(default_state_value)
-    sudo_volunteer_work = copy.deepcopy(default_state_value)
-    sudo_unpaid = copy.deepcopy(default_state_value)
-    sudo_home_and_commnunity = copy.deepcopy(default_state_value)
+    related_twitter_data = get_default_state_value()
+    sudo_volunteer_work = get_default_state_value()
+    sudo_unpaid = get_default_state_value()
+    sudo_home_and_commnunity = get_default_state_value()
 
     formatted_sudo_volunteer_work = aggregate_volunteer_work_data(data_sudo_volunteer_work)
     formatted_sudo_unpaid = aggregate_unpaid_assistance_data(data_sudo_unpaid)
