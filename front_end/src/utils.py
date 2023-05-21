@@ -83,7 +83,16 @@ def aggregate_unpaid_assistance_data(data):
 
     return map_to_key_value(list)
 
-
+def get_series_data(name, data, type = "bar"):
+    data_list = list(data.values())
+    return {
+        "name": name,
+        "type": type,
+        "stack": "total",
+        "label": {"show": True},
+        "emphasis": {"focus": "series"},
+        "data": data_list,
+    }
 
 
 

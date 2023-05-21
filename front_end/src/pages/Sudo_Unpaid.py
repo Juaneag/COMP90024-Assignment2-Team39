@@ -1,7 +1,7 @@
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import get_url, DATA, state_name, aggregate_unpaid_assistance_data, default_state_value
+from utils import get_url, DATA, state_name, aggregate_unpaid_assistance_data, default_state_value, get_series_data
 
 st.set_page_config(page_title="Sudo Unpaid", page_icon="📈")
 st.markdown('''
@@ -12,17 +12,6 @@ _from LGA-I09 Unpaid Assistance to a Person with a Disability by Age by Sex for 
 ''')
 
 TOTAL = "Females total number unpaid assistance"
-
-def get_series_data(name, data):
-    data_list = list(data.values())
-    return {
-        "name": name,
-        "type": "bar",
-        "stack": "total",
-        "label": {"show": True},
-        "emphasis": {"focus": "series"},
-        "data": data_list,
-    }
 
 if __name__ == '__main__':
     data = []

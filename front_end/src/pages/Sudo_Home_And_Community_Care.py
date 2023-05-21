@@ -1,7 +1,7 @@
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import get_url, DATA, state_name, aggregate_home_and_community_data, default_state_value
+from utils import get_url, DATA, state_name, aggregate_home_and_community_data, default_state_value, get_series_data
 
 st.set_page_config(page_title="Sudo Home And Community Care", page_icon="📈")
 st.markdown('''
@@ -12,17 +12,6 @@ _from SD Home and Community Care Program 2012-2013_
 ''')
 
 TOTAL = "Total Instances of Assistance"
-
-def get_series_data(name, data):
-    data_list = list(data.values())
-    return {
-        "name": name,
-        "type": "bar",
-        "stack": "total",
-        "label": {"show": True},
-        "emphasis": {"focus": "series"},
-        "data": data_list,
-    }
 
 if __name__ == '__main__':
     data = []

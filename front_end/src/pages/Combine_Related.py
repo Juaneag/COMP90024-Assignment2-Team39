@@ -2,7 +2,7 @@ import copy
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import DATA, get_url, default_state_value, state_name, aggregate_unpaid_assistance_data, aggregate_home_and_community_data, aggregate_volunteer_work_data
+from utils import DATA, get_url, default_state_value, state_name, aggregate_unpaid_assistance_data, aggregate_home_and_community_data, aggregate_volunteer_work_data, get_series_data
 
 st.set_page_config(page_title="Combine Related", page_icon="📈")
 st.markdown('''
@@ -14,17 +14,7 @@ RELATED = "Twitter"
 SUDO_HOME_AND_COMMU = "Total Instances of Assistance"
 SUDO_UNPAID = "Females Total Number Unpaid Assistance"
 SUDO_VOLUNTEER = "Total Volunteer"
-
-def get_series_data(name, data):
-    data_list = list(data.values())
-    return {
-        "name": name,
-        "type": "line",
-        "stack": "total",
-        "label": {"show": True},
-        "emphasis": {"focus": "series"},
-        "data": data_list,
-    }
+DATA_SERIES_TYPE = "line"
 
 if __name__ == '__main__':
     data_twitter = []
@@ -66,10 +56,10 @@ if __name__ == '__main__':
         sudo_home_and_commnunity[item["key"]] += round(item["value"]["hcc_toti_1_no_7_12_6_13"], 2)
 
     stacked_state_data = [
-        get_series_data(RELATED, related_twitter_data),
-        get_series_data(SUDO_VOLUNTEER, sudo_volunteer_work),
-        get_series_data(SUDO_UNPAID, sudo_unpaid),
-        get_series_data(SUDO_HOME_AND_COMMU, sudo_home_and_commnunity)
+        get_series_data(RELATED, related_twitter_data, DATA_SERIES_TYPE),
+        get_series_data(SUDO_VOLUNTEER, sudo_volunteer_work, DATA_SERIES_TYPE),
+        get_series_data(SUDO_UNPAID, sudo_unpaid, DATA_SERIES_TYPE),
+        get_series_data(SUDO_HOME_AND_COMMU, sudo_home_and_commnunity, DATA_SERIES_TYPE)
     ]
 
     options = {
@@ -83,6 +73,10 @@ if __name__ == '__main__':
             "type": "category",
             "inverse": True,
             "data": list(state_name.values()),
+            "axisLabel": {
+                "interval": 0,
+                "rotate": 30
+            }
         },
         "series": stacked_state_data,
     }

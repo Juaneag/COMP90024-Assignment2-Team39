@@ -2,7 +2,7 @@ import copy
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import DATA, get_url, state_name, default_state_value
+from utils import DATA, get_url, state_name, default_state_value, get_series_data
 
 st.set_page_config(page_title="Twitter Compare Related", page_icon="📈")
 st.markdown('''
@@ -12,17 +12,6 @@ Compare Twitter data of related vs unrelated tweets with charity in each state
 
 RELATED = "Related"
 UNRELATED = "Unrelated"
-
-def get_series_data(name, data):
-    data_list = list(data.values())
-    return {
-        "name": name,
-        "type": "bar",
-        "stack": "total",
-        "label": {"show": True},
-        "emphasis": {"focus": "series"},
-        "data": data_list,
-    }
 
 if __name__ == '__main__':
     data_related = []
