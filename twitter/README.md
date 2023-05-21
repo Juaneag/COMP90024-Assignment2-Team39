@@ -66,8 +66,6 @@ Consider twitter data is past data will not change in size, content. Hence, it d
 
 Similar to [mastodon](../mastodon/README.md#acknowledgement-and-reference)
 
-- beautiful soup official documentation: https://beautiful-soup-4.readthedocs.io/en/latest/
-- online tutorial on getting text by beautiful soup: http://www.compjour.org/warmups/govt-text-releases/intro-to-bs4-lxml-parsing-wh-press-briefings/#converting-html-text-into-a-data-object
 - workshop solution from past course: https://edstem.org/au/courses/9158/lessons/25867/slides/185032/solution
 - regular expression document: https://www.w3schools.com/python/python_regex.asp
 - keywords from: https://www.merriam-webster.com/thesaurus/volunteer
@@ -75,4 +73,7 @@ Similar to [mastodon](../mastodon/README.md#acknowledgement-and-reference)
   and https://couchdb-python.readthedocs.io/en/latest/client.html#database
 - ED discussion: https://edstem.org/au/courses/11705/discussion/
 - deal with zip file: https://stackoverflow.com/questions/40824807/reading-zipped-json-files
-- convert decimal in json: https://stackoverflow.com/questions/1960516/python-json-serialize-a-decimal-object
+- convert decimal in json: https://stackoverflow.com/questions/11875770/how-to-overcome-datetime-datetime-not-json-serializable and https://stackoverflow.com/questions/1960516/python-json-serialize-a-decimal-object
+- used sal.json provided in Assignment 1
+- used Bingguang and Arezoo's code for Assignment 1
+

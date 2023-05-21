@@ -3,6 +3,7 @@ volumes:
   - device: /dev/vdb
     mountpoint: /home/ubuntu/data
 
+# add couchDB master's information and cluster's information here
 masternode: 172.26.129.56
 node_count: 3
 username: admin

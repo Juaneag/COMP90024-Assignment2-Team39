@@ -180,7 +180,7 @@ The Ansible playbook just create instance with proper security group. It can be 
 - upload whole back_end floder onto instances, create container with dockerfile or docker compose.
 - push image to docker hub, pull image in instance.
 
-Our group choose second method so that source code is not on instance. And in this case, no difference between deploy manually on instance or by playbook since only one backend app needed to deploy.
+Our group choose second method. And in this case, no difference between deploy manually on instance or by playbook since only one backend app needed to deploy.
 
 ### frontend
 
@@ -207,6 +207,8 @@ All playbook is following workshop template repo:
 - Week 6 Workshop Repo By alwynpan (Yao Pan): https://canvas.lms.unimelb.edu.au/courses/151783
 
 Other:
+- ED discussion: https://edstem.org/au/courses/11705/discussion/
+- Code template to create docker image by playbook from: https://www.redhat.com/sysadmin/container-images-ansible
 - Ansible Documentation: https://docs.ansible.com/ansible/latest/index.html
 - Used suggested command to check if volume is mounted to instances: https://serverfault.com/questions/50585/whats-the-best-way-to-check-if-a-volume-is-mounted-in-a-bash-script
 - linux command line (mkdir -p PATH) follow instructions on https://www.javatpoint.com/linux-mkdir
@@ -214,7 +216,7 @@ Other:
   
   Suggestions on code by GPT:
   1. See _/roles/couchdb/tasks/main.yaml_ second block (chmod command for container mount). A brief description of the conversation on comment in the _yaml_ file.
-  2. See _/roles/couchdb-cluser/tasks/main.yaml_ and _/roles/couchdb-cluser-finish/tasks/main.yaml_, add escape '\' to make shell run.
+  2. See _/roles/couchdb-cluser/tasks/main.yaml_ and _/roles/couchdb-cluser-finish/tasks/main.yaml_, change " to ' to make shell run.
 
 - Tried to use convert tool to convert curl command to ansible uri: https://curlconverter.com/ansible/
   

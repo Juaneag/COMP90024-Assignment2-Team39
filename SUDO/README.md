@@ -24,4 +24,4 @@ make sure SUDO data is in same floder
 
 - couchdb package documentation: https://pypi.org/project/CouchDB2/
   and https://couchdb-python.readthedocs.io/en/latest/client.html#database
-- convert decimal in json: https://stackoverflow.com/questions/1960516/python-json-serialize-a-decimal-object
+- deal with json file: https://stackoverflow.com/questions/11875770/how-to-overcome-datetime-datetime-not-json-serializable and https://stackoverflow.com/questions/1960516/python-json-serialize-a-decimal-object

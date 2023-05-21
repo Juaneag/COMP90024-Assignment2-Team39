@@ -1,3 +1,5 @@
+## adapt from workshop repo: https://gitlab.unimelb.edu.au/feit-comp90024/comp90024
+
 export declare nodes=(172.26.129.56 172.26.135.223 172.26.129.198)
 export masternode=`echo ${nodes} | cut -f1 -d' '`
 export declare othernodes=`echo ${nodes[@]} | sed s/${masternode}//`

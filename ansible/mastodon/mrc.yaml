@@ -13,6 +13,6 @@
     - host_vars/mrc.yaml
   roles:
     - role: common
-    #- role: install-docker
+    - role: install-docker # Once created, no need to run this again to increase efficiency
     - role: Create-image
     - role: deploy

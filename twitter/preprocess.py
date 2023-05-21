@@ -4,13 +4,23 @@
 - removed the open and end line, only take tweet object
 '''
 
-import sys
-from mastodon import Mastodon, MastodonNotFoundError, MastodonRatelimitError, StreamListener
-import couchdb2 as couchdb
-from uuid import uuid4
+# used material: workshop solution from past course in UniMelb (COMP20008): https://edstem.org/au/courses/9158/lessons/25867/slides/185032/solution
+# packages: ijson https://pypi.org/project/ijson/
+# simplejson https://pypi.org/project/simplejson/
+# nltk https://www.nltk.org/
+# re https://docs.python.org/3/library/re.html
+# zipfile https://docs.python.org/3/library/zipfile.html
+# used sal.json provided in Assignment 1
+# used Bingguang and Arezoo's code for Assignment 1
+##########################################################
+# Refer to: regular expression document: https://www.w3schools.com/python/python_regex.asp
+# keywords from: https://www.merriam-webster.com/thesaurus/volunteer
+# deal with zip file: https://stackoverflow.com/questions/40824807/reading-zipped-json-files
+# convert decimal in json: https://stackoverflow.com/questions/11875770/how-to-overcome-datetime-datetime-not-json-serializable and https://stackoverflow.com/questions/1960516/python-json-serialize-a-decimal-object
+
+
 import ijson
 import simplejson as json
-from bs4 import BeautifulSoup
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
@@ -21,15 +31,31 @@ nltk.download('punkt')
 nltk.download('stopwords')
 
 
+# create keywords dictionary, do stemmer step by nltk
 keywords = ["voluntary", "volunteer", "volunteering", "nonprofit", "charity", "donor", "donation", "unpaid", "rendering", "bestowing", "volitional"]
 porterStemmer = PorterStemmer()
 keywords = set([porterStemmer.stem(w) for w in keywords])
 stop_words = set(stopwords.words('english'))
 
+'''
+get string content, do nlp process:
+- clean the content string
+- tokenize
+- remove stop words
+- stem
+--------------------------------------
+code adapt from previous course in uniMelb workshop solution:
+https://edstem.org/au/courses/9158/lessons/25867/slides/185032/solution
+--------------------------------------
+Args:
+    content (string): content need to process
+Return:
+    stemmed (list): a list of words processed as described above
+'''
 def nlp_content(content):
     out = re.sub(r'non-profit', 'nonprofit', content.lower())
     out = re.sub(r'https:\/\/[^\s]+', '', out) # remove link
-    out = re.sub(r'[^A-z\s]', ' ', out) # remove all english character words
+    out = re.sub(r'[^A-z\s]', ' ', out) # remove all non-english character words
     out = re.sub(r'\s+', ' ', out) # deal with multiple space
 
     tokens = nltk.word_tokenize(out) # tokenisation
@@ -42,12 +68,44 @@ def nlp_content(content):
     
     return stemmed
 
+'''
+determine if a tweet as related content
+-----------------------------------------
+rules: if content mentioned words in key-word dictionary,
+it is related, otherwise is not
+-----------------------------------------
+Args:
+    content (list): output of the nlp_content
+Return:
+    True/False (related/not related)
+'''
 def determine_related(content):
     for w in content:
         if w in keywords:
             return True
     return False
 
+'''
+convert raw tweet record to contain only information needed
+----------------------------------------------------------
+rules:
+- each tweet record after process will contain:
+    - user id
+    - content: string value
+    - place
+    - state: matched by sal.json
+    - related: as described above
+- if tweet doesn't have any one of following, ignore:
+    - user id
+    - place
+    - language is not 'en'
+- if no place name matched in sal.json, ignore record
+---------------------------------------------------------------------
+Args:
+    record: twitter data single record
+Retrun:
+    out: processed tweet
+'''
 def convert_record(record):
     try:
         uid = record['doc']['data']['author_id']
@@ -62,14 +120,6 @@ def convert_record(record):
             return False
     except:
         return False
-    #try:
-        #tags = [porterStemmer.stem(w['name']) for w in record['tags']]
-    #except:
-        #tags = []
-    #try:
-        #time = record['created_at']
-    #except:
-        #time = 'null'
     try:
         #original_content = BeautifulSoup(record['doc']['data']['text'], 'html.parser').text
         original_content = record['doc']['data']['text']
@@ -86,6 +136,9 @@ def convert_record(record):
     out['related'] = related
     return out
 
+'''
+load sal.json file. Use Bingguang and Arezoo's code for Assignment 1.
+'''
 with open('data/sal.json') as fsal:
     sal_items = ijson.items(fsal, '')
     state_dict = {'1': [], '2': [], '3': [], '4': [], '5': [], '6': [], '7': [], '8': [], '9': []}
@@ -95,7 +148,7 @@ with open('data/sal.json') as fsal:
 
 
 
-
+# write processed data into preprocessed.json
 output_path = 'preprocessed.json'
 
 try:

@@ -1,9 +1,16 @@
+# used package: couchdb2 https://pypi.org/project/CouchDB2/
+# ijson https://pypi.org/project/ijson/
+############################################################
+# get idea from ED discussion: https://edstem.org/au/courses/11705/discussion/
+
 import couchdb2 as couchdb
-import simplejson as json
 import ijson
 import time
-from uuid import uuid4
 
+'''
+import twitter data to couchDB. Print current state while running
+'''
+# connect to couchdb server and database
 begin = time.time()
 
 couch = couchdb.Server()
@@ -23,6 +30,7 @@ with open(path, 'r') as f:
     for record in items:
         update_list.append(record)
         count += 1
+        # update 10000 records a time
         if count % 10000 == 0:
             print(count // 10000, 'round, data uplaoded is: ', count)
             db.update(update_list)

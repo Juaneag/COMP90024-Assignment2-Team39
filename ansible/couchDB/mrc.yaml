@@ -10,6 +10,7 @@
     - role: openstack-instance-master
     - role: openstack-instance-clusters
 
+# install docker on both master and other cluster nodes
 - hosts: CouchDBMaster
   gather_facts: true
   roles:
@@ -22,6 +23,7 @@
     - role: common
     - role: install-docker
 
+# mount volumes to both master and other cluster nodes
 - hosts: CouchDBMaster
   gather_facts: true
   vars_files:
@@ -30,6 +32,7 @@
     - role: volumes
     - role: couchdb
 
+# also start cluster settings
 - hosts: CouchDBClusters
   gather_facts: true
   vars_files:
@@ -39,6 +42,7 @@
     - role: couchdb
     - role: couchdb-cluster
 
+# finish cluster settings
 - hosts: CouchDBMaster
   gather_facts: true
   vars_files:
