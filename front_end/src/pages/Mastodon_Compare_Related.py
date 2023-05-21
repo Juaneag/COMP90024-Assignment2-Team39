@@ -2,7 +2,7 @@ import copy
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import DATA, get_url, get_series_data
+from utils import DATA, get_url
 
 st.set_page_config(page_title="Mastodon Compare Related", page_icon="📈")
 st.markdown('''
@@ -12,6 +12,16 @@ Compare related vs unrelated toots
 
 RELATED = "Related"
 UNRELATED = "Unrelated"
+
+def get_series_data(name, data):
+    return {
+        "name": name,
+        "type": "bar",
+        "stack": "total",
+        "label": {"show": True},
+        "emphasis": {"focus": "series"},
+        "data": data,
+    }
 
 if __name__ == '__main__':
     data = []
