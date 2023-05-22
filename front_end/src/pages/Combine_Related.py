@@ -8,7 +8,6 @@ st.markdown('''
 #### Combine Related
 Compare all SUDO data and total tweets related to charity in each state 
 ''')
-
 RELATED = "Twitter"
 SUDO_HOME_AND_COMMU = "Total Instances of Assistance"
 SUDO_UNPAID = "Females Total Number Unpaid Assistance"
@@ -54,14 +53,41 @@ if __name__ == '__main__':
     for item in formatted_sudo_home_and_commnunity:
         sudo_home_and_commnunity[item["key"]] += round(item["value"]["hcc_toti_1_no_7_12_6_13"], 2)
 
-    stacked_state_data = [
-        get_series_data(RELATED, related_twitter_data, DATA_SERIES_TYPE),
-        get_series_data(SUDO_VOLUNTEER, sudo_volunteer_work, DATA_SERIES_TYPE),
-        get_series_data(SUDO_UNPAID, sudo_unpaid, DATA_SERIES_TYPE),
-        get_series_data(SUDO_HOME_AND_COMMU, sudo_home_and_commnunity, DATA_SERIES_TYPE)
+    line_data = [
+        get_series_data(RELATED, related_twitter_data, DATA_SERIES_TYPE, None),
+        get_series_data(SUDO_VOLUNTEER, sudo_volunteer_work, DATA_SERIES_TYPE, None),
+        get_series_data(SUDO_UNPAID, sudo_unpaid, DATA_SERIES_TYPE, None),
+        get_series_data(SUDO_HOME_AND_COMMU, sudo_home_and_commnunity, DATA_SERIES_TYPE, None)
     ]
 
-    options = {
+    options_line = {
+        "tooltip": {"trigger": "axis", "axisPointer": {"type": "shadow"}},
+        "legend": {
+            "data": [RELATED, SUDO_VOLUNTEER, SUDO_UNPAID, SUDO_HOME_AND_COMMU]
+        },
+        "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
+        "yAxis": {"type": "value"},
+        "xAxis": {
+            "type": "category",
+            "inverse": True,
+            "data": list(state_name.values()),
+            "axisLabel": {
+                "interval": 0,
+                "rotate": 30
+            }
+        },
+        "series": line_data,
+    }
+    st_echarts(options=options_line, height="500px")
+    st.divider()
+    stacked_state_data = [
+        get_series_data(RELATED, related_twitter_data),
+        get_series_data(SUDO_VOLUNTEER, sudo_volunteer_work),
+        get_series_data(SUDO_UNPAID, sudo_unpaid),
+        get_series_data(SUDO_HOME_AND_COMMU, sudo_home_and_commnunity)
+    ]
+
+    options_stacked_bar = {
         "tooltip": {"trigger": "axis", "axisPointer": {"type": "shadow"}},
         "legend": {
             "data": [RELATED, SUDO_VOLUNTEER, SUDO_UNPAID, SUDO_HOME_AND_COMMU]
@@ -79,4 +105,4 @@ if __name__ == '__main__':
         },
         "series": stacked_state_data,
     }
-    st_echarts(options=options, height="500px")
+    st_echarts(options=options_stacked_bar, height="500px")
