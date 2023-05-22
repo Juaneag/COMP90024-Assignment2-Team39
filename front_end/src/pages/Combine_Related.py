@@ -1,7 +1,7 @@
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import DATA, get_url, get_default_state_value, state_name, aggregate_unpaid_assistance_data, aggregate_home_and_community_data, aggregate_volunteer_work_data, get_series_data
+from utils import DATA, get_url, get_default_state_value, state_name, aggregate_unpaid_assistance_data, aggregate_home_and_community_data, aggregate_volunteer_work_data, get_series_data, get_chart_option
 
 st.set_page_config(page_title="Combine Related", page_icon="📈")
 st.markdown('''
@@ -60,24 +60,19 @@ if __name__ == '__main__':
         get_series_data(SUDO_HOME_AND_COMMU, sudo_home_and_commnunity, DATA_SERIES_TYPE, None)
     ]
 
-    options_line = {
-        "tooltip": {"trigger": "axis", "axisPointer": {"type": "shadow"}},
-        "legend": {
-            "data": [RELATED, SUDO_VOLUNTEER, SUDO_UNPAID, SUDO_HOME_AND_COMMU]
-        },
-        "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
-        "yAxis": {"type": "value"},
-        "xAxis": {
-            "type": "category",
-            "inverse": True,
-            "data": list(state_name.values()),
-            "axisLabel": {
-                "interval": 0,
-                "rotate": 30
-            }
-        },
-        "series": line_data,
+    legends = [RELATED, SUDO_VOLUNTEER, SUDO_UNPAID, SUDO_HOME_AND_COMMU]
+    yAxisOverwrite = {"type": "value"}
+    xAxisOverwrite = {
+        "type": "category",
+        "inverse": True,
+        "data": list(state_name.values()),
+        "axisLabel": {
+            "interval": 0,
+            "rotate": 30
+        }
     }
+    options_line = get_chart_option(line_data, legends, xAxisOverwrite, yAxisOverwrite)
+
     st_echarts(options=options_line, height="500px")
     st.divider()
     stacked_state_data = [
@@ -86,23 +81,7 @@ if __name__ == '__main__':
         get_series_data(SUDO_UNPAID, sudo_unpaid),
         get_series_data(SUDO_HOME_AND_COMMU, sudo_home_and_commnunity)
     ]
+    
+    options_stacked_bar = get_chart_option(stacked_state_data, legends, xAxisOverwrite, yAxisOverwrite)
 
-    options_stacked_bar = {
-        "tooltip": {"trigger": "axis", "axisPointer": {"type": "shadow"}},
-        "legend": {
-            "data": [RELATED, SUDO_VOLUNTEER, SUDO_UNPAID, SUDO_HOME_AND_COMMU]
-        },
-        "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
-        "yAxis": {"type": "value"},
-        "xAxis": {
-            "type": "category",
-            "inverse": True,
-            "data": list(state_name.values()),
-            "axisLabel": {
-                "interval": 0,
-                "rotate": 30
-            }
-        },
-        "series": stacked_state_data,
-    }
     st_echarts(options=options_stacked_bar, height="500px")

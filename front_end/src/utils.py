@@ -95,5 +95,28 @@ def get_series_data(name, data, type = "bar", stackConfig = "total"):
         "data": data_list,
     }
 
+def get_chart_option(data, legends, overwriteXAxis = None, overwriteYAxis = None):
+    options = {
+        "tooltip": {"trigger": "axis", "axisPointer": {"type": "shadow"}},
+        "legend": {
+            "data": legends
+        },
+        "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
+        "xAxis": {"type": "value"},
+        "yAxis": {
+            "type": "category",
+            "inverse": True,
+            "data": list(state_name.values()),
+        },
+        "series": data,
+    }
+
+    if overwriteXAxis:
+        options["xAxis"] = overwriteXAxis
+
+    if overwriteYAxis:
+        options["yAxis"] = overwriteYAxis    
+
+    return options
 
 

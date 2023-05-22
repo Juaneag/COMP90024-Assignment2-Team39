@@ -1,7 +1,7 @@
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import DATA, get_url, state_name, aggregate_volunteer_work_data, get_default_state_value, get_series_data
+from utils import DATA, get_url, get_chart_option, aggregate_volunteer_work_data, get_default_state_value, get_series_data
 
 st.set_page_config(page_title="Sudo Volunteer Work", page_icon="📈")
 st.markdown('''
@@ -36,18 +36,5 @@ if __name__ == '__main__':
         get_series_data(NONVOLUNTEER, non_volunteer_data)
     ]
 
-    options = {
-        "tooltip": {"trigger": "axis", "axisPointer": {"type": "shadow"}},
-        "legend": {
-            "data": [VOLUNTEER, NONVOLUNTEER]
-        },
-        "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
-        "xAxis": {"type": "value"},
-        "yAxis": {
-            "type": "category",
-            "inverse": True,
-            "data": list(state_name.values()),
-        },
-        "series": stacked_state_data,
-    }
+    options = get_chart_option(stacked_state_data, [VOLUNTEER, NONVOLUNTEER])
     st_echarts(options=options, height="500px")

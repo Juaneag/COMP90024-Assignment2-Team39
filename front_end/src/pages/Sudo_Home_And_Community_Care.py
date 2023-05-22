@@ -1,7 +1,7 @@
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import get_url, DATA, state_name, aggregate_home_and_community_data, get_default_state_value, get_series_data
+from utils import get_url, DATA, get_chart_option, aggregate_home_and_community_data, get_default_state_value, get_series_data
 
 st.set_page_config(page_title="Sudo Home And Community Care", page_icon="📈")
 st.markdown('''
@@ -32,18 +32,5 @@ if __name__ == '__main__':
         get_series_data(TOTAL, total_data),
     ]
 
-    options = {
-        "tooltip": {"trigger": "axis", "axisPointer": {"type": "shadow"}},
-        "legend": {
-            "data": [TOTAL]
-        },
-        "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
-        "xAxis": {"type": "value"},
-        "yAxis": {
-            "type": "category",
-            "inverse": True,
-            "data": list(state_name.values()),
-        },
-        "series": stacked_state_data,
-    }
+    options = get_chart_option(stacked_state_data, [TOTAL])
     st_echarts(options=options, height="500px")

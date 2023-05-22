@@ -2,7 +2,7 @@ import copy
 import requests
 import streamlit as st
 from streamlit_echarts import st_echarts
-from utils import DATA, get_url
+from utils import DATA, get_url, get_chart_option
 
 st.set_page_config(page_title="Mastodon Compare Related", page_icon="📈")
 st.markdown('''
@@ -39,18 +39,11 @@ if __name__ == '__main__':
         get_series_data(UNRELATED, [formatted_data[0]])
     ]
 
-    options = {
-        "tooltip": {"trigger": "axis", "axisPointer": {"type": "shadow"}},
-        "legend": {
-            "data": [RELATED, UNRELATED]
-        },
-        "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
-        "xAxis": {"type": "value"},
-        "yAxis": {
-            "type": "category",
-            "inverse": True,
-            "data": ["Mastodon"],
-        },
-        "series": stacked_state_data,
+    yAxisOverwrite = {
+        "type": "category",
+        "inverse": True,
+        "data": ["Mastodon"],
     }
+    get_chart_option(stacked_state_data, [RELATED, UNRELATED], None, yAxisOverwrite)
+    options = get_chart_option(stacked_state_data, [RELATED, UNRELATED], None, yAxisOverwrite)
     st_echarts(options=options, height="500px")

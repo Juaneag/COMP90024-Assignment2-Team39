@@ -1,6 +1,7 @@
 # 22 May
 ## Frontend
 - For combine realted page, fix stacked line graph to combined line graph, and add stacked bar instead
+- Refactor
 
 # 21 May
 ## Frontend
