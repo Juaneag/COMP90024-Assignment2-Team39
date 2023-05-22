@@ -168,3 +168,7 @@ Refer to many documentations and sites, recorded in sub-folder README files. Lis
   - Calling API inside Streamlit
     - https://discuss.streamlit.io/t/using-an-api-from-inside-streamlit-app/37477/22
     - each request should have code running under main functions otherwise it will not working
+
+- [README]
+  - Github instructions: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+  - and: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
