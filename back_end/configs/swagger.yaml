@@ -1,8 +1,8 @@
 swagger: "2.0"
 
 info:
-  title: Swagger Template
-  description: A Template API
+  title: Charity data related
+  description: Charity related data from tweets, mastodon, and sudo data
   version: "0.1"
 
 paths:

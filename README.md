@@ -157,4 +157,14 @@ Refer to many documentations and sites, recorded in sub-folder README files. Lis
   - used Bingguang and Arezoo's code for Assignment 1
 
 - [SUDO](./SUDO/README.md#acknowledgement-and-reference): very similar to twitter and mastodon.
-
+- [Backend](./back_end/README.md#acknowledgement-and-reference)
+  - For flask template, https://github.com/iliasmansouri/flask-swagger-template
+  - For swagger format, https://swagger.io/docs/specification/2-0/basic-structure/
+- [Frontend](./front_end/README.md#acknowledgement-and-reference)
+  - For setup, https://docs.streamlit.io/library/get-started
+  - Chart visualization
+    - https://docs.streamlit.io/library/api-reference/charts
+    - https://echarts.streamlit.app/
+  - Calling API inside Streamlit
+    - https://discuss.streamlit.io/t/using-an-api-from-inside-streamlit-app/37477/22
+    - each request should have code running under main functions otherwise it will not working

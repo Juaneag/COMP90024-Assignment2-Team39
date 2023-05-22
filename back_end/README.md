@@ -25,3 +25,7 @@
     - docker logout
 
 for current package available in chinatipk/backend
+
+## Acknowledgement and Reference
+- For flask template, https://github.com/iliasmansouri/flask-swagger-template
+- For swagger format, https://swagger.io/docs/specification/2-0/basic-structure/

@@ -26,3 +26,12 @@
 
 for current package available in chinatipk/frontend
 
+## Acknowledgement and Reference
+- For charts visualizations
+    - For setup, https://docs.streamlit.io/library/get-started
+  - Chart visualization
+    - https://docs.streamlit.io/library/api-reference/charts
+    - https://echarts.streamlit.app/
+  - Calling API inside Streamlit
+    - https://discuss.streamlit.io/t/using-an-api-from-inside-streamlit-app/37477/22
+    - each request should have code running under main functions otherwise it will not working
