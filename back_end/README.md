@@ -1,16 +1,16 @@
-# To run this file
-## using docker compose
+## To run this file
+### using docker compose
 - docker-compose build
 - docker-compose up
 
-## normal docker run
+### normal docker run
 - docker build -t backend .
 - docker run -p 8296:8296 backend
 
-## run in local
+### run in local
 - python run.py
 
-# To upload this image and run in instance
+## To upload this image and run in instance
 - build package
     - docker build -t backend .
 - push image to docker hub

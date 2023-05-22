@@ -1,16 +1,16 @@
-# To run this file
-## using docker compose
+## To run this file
+### using docker compose
 - docker-compose build
 - docker-compose up
 
-## normal docker run
+### normal docker run
 - docker build -t streamlit .
 - docker run -p 8501:8501 streamlit
 
-## only streamlit
+### only streamlit
 - go to /src, streamlit run home.py
 
-# To upload this image and run in instance
+## To upload this image and run in instance
 - build package
     - docker build -t streamlit .
 - push image to docker hub
